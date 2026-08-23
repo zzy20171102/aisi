@@ -1,0 +1,36 @@
+flowchart TD
+    subgraph lLAY01["LAY-01 应用层（前端应用）"]
+        mMOD11("MOD-11")
+        mMOD12("MOD-12")
+        mMOD21("MOD-21")
+        mMOD22("MOD-22")
+        mMOD31("MOD-31")
+        mMOD32("MOD-32")
+        mMOD04("MOD-04")
+        mMOD51("MOD-51")
+        mMOD52("MOD-52")
+        mMOD53("MOD-53")
+        mMOD61("MOD-61")
+        mMOD62("MOD-62")
+        mMOD63("MOD-63")
+        mMOD07("MOD-07")
+        mMOD81("MOD-81")
+        mMOD82("MOD-82")
+        mMOD83("MOD-83")
+        mMOD84("MOD-84")
+        mMOD85("MOD-85")
+        mMOD91("MOD-91")
+        mMOD92("MOD-92")
+    end
+    subgraph lLAY02["LAY-02 接口层（前后端交互服务）"]
+        mMOD40("MOD-40")
+    end
+    subgraph lLAY03["LAY-03 业务逻辑层（后端服务）"]
+        mMOD10("MOD-10")
+    end
+    subgraph lLAY04["LAY-04 数据层（持久化存储）"]
+        mMOD20("MOD-20")
+    end
+    lLAY01 --> lLAY02
+    lLAY02 --> lLAY03
+    lLAY03 --> lLAY04

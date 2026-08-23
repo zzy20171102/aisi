@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8">
+<title>人力资源管理系统 · 系统设计图集</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>body{font-family:'Microsoft YaHei',sans-serif;max-width:1200px;margin:0 auto;
+padding:24px;background:#fafbfc}h1{color:#1a3c6e}section{background:#fff;border:1px solid
+#e1e4e8;border-radius:8px;padding:16px;margin:20px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.mermaid{display:flex;justify-content:center}</style></head>
+<body><h1>人力资源管理系统 · 系统设计图集</h1>
+<p>由 AISI 工具套件生成（2026-08-23T20:38:57）；
+首次打开需联网加载 mermaid.js。</p>
+<section><h2>requirements-tree</h2><pre class='mermaid'>flowchart TD
+    rREQ001[&quot;REQ-001 功能需求&quot;]
+    rREQ001_1[&quot;REQ-001.1 员工资料管理&quot;]
+    rREQ001 --&gt; rREQ001_1
+    rREQ001_1_1[&quot;REQ-001.1.1 基本资料管理&quot;]
+    rREQ001_1 --&gt; rREQ001_1_1
+    rREQ001_1_1_1[&quot;REQ-001.1.1.1 档案增删改查&quot;]
+    rREQ001_1_1 --&gt; rREQ001_1_1_1
+    rREQ001_1_1_2[&quot;REQ-001.1.1.2 工号自动生成&quot;]
+    rREQ001_1_1 --&gt; rREQ001_1_1_2
+    rREQ001_1_1_3[&quot;REQ-001.1.1.3 必填项校验&quot;]
+    rREQ001_1_1 --&gt; rREQ001_1_1_3
+    rREQ001_1_1_4[&quot;REQ-001.1.1.4 多条件搜索&quot;]
+    rREQ001_1_1 --&gt; rREQ001_1_1_4
+    rREQ001_1_2[&quot;REQ-001.1.2 高级资料查询&quot;]
+    rREQ001_1 --&gt; rREQ001_1_2
+    rREQ001_1_2_1[&quot;REQ-001.1.2.1 培训资料查询&quot;]
+    rREQ001_1_2 --&gt; rREQ001_1_2_1
+    rREQ001_1_2_2[&quot;REQ-001.1.2.2 考评资料查询&quot;]
+    rREQ001_1_2 --&gt; rREQ001_1_2_2
+    rREQ001_1_2_3[&quot;REQ-001.1.2.3 工资信息查询&quot;]
+    rREQ001_1_2 --&gt; rREQ001_1_2_3
+    rREQ001_2[&quot;REQ-001.2 员工奖惩管理&quot;]
+    rREQ001 --&gt; rREQ001_2
+    rREQ001_2_1[&quot;REQ-001.2.1 添加奖惩&quot;]
+    rREQ001_2 --&gt; rREQ001_2_1
+    rREQ001_2_2[&quot;REQ-001.2.2 奖惩管理列表&quot;]
+    rREQ001_2 --&gt; rREQ001_2_2
+    rREQ001_3[&quot;REQ-001.3 员工培训与考评&quot;]
+    rREQ001 --&gt; rREQ001_3
+    rREQ001_3_1[&quot;REQ-001.3.1 培训管理&quot;]
+    rREQ001_3 --&gt; rREQ001_3_1
+    rREQ001_3_1_1[&quot;REQ-001.3.1.1 批量添加培训&quot;]
+    rREQ001_3_1 --&gt; rREQ001_3_1_1
+    rREQ001_3_1_2[&quot;REQ-001.3.1.2 在训唯一约束&quot;]
+    rREQ001_3_1 --&gt; rREQ001_3_1_2
+    rREQ001_3_1_3[&quot;REQ-001.3.1.3 培训进度管理&quot;]
+    rREQ001_3_1 --&gt; rREQ001_3_1_3
+    rREQ001_3_2[&quot;REQ-001.3.2 考评管理&quot;]
+    rREQ001_3 --&gt; rREQ001_3_2
+    rREQ001_3_2_1[&quot;REQ-001.3.2.1 批量添加考评&quot;]
+    rREQ001_3_2 --&gt; rREQ001_3_2_1
+    rREQ001_4[&quot;REQ-001.4 员工调动管理&quot;]
+    rREQ001 --&gt; rREQ001_4
+    rREQ001_5[&quot;REQ-001.5 薪资管理&quot;]
+    rREQ001 --&gt; rREQ001_5
+    rREQ001_5_1[&quot;REQ-001.5.1 工资账套管理&quot;]
+    rREQ001_5 --&gt; rREQ001_5_1
+    rREQ001_5_2[&quot;REQ-001.5.2 员工账套设置&quot;]
+    rREQ001_5 --&gt; rREQ001_5_2
+    rREQ001_5_3[&quot;REQ-001.5.3 工资表管理&quot;]
+    rREQ001_5 --&gt; rREQ001_5_3
+    rREQ001_6[&quot;REQ-001.6 统计分析&quot;]
+    rREQ001 --&gt; rREQ001_6
+    rREQ001_6_1[&quot;REQ-001.6.1 员工积分统计&quot;]
+    rREQ001_6 --&gt; rREQ001_6_1
+    rREQ001_6_2[&quot;REQ-001.6.2 人事信息分析&quot;]
+    rREQ001_6 --&gt; rREQ001_6_2
+    rREQ001_6_3[&quot;REQ-001.6.3 人事记录分析&quot;]
+    rREQ001_6 --&gt; rREQ001_6_3
+    rREQ001_7[&quot;REQ-001.7 人事通讯&quot;]
+    rREQ001 --&gt; rREQ001_7
+    rREQ001_8[&quot;REQ-001.8 基础信息设置&quot;]
+    rREQ001 --&gt; rREQ001_8
+    rREQ001_8_1[&quot;REQ-001.8.1 部门管理&quot;]
+    rREQ001_8 --&gt; rREQ001_8_1
+    rREQ001_8_2[&quot;REQ-001.8.2 职位管理&quot;]
+    rREQ001_8 --&gt; rREQ001_8_2
+    rREQ001_8_3[&quot;REQ-001.8.3 职称管理 ⚠&quot;]
+    rREQ001_8 --&gt; rREQ001_8_3
+    rREQ001_8_4[&quot;REQ-001.8.4 奖惩规则管理&quot;]
+    rREQ001_8 --&gt; rREQ001_8_4
+    rREQ001_8_5[&quot;REQ-001.8.5 权限组管理&quot;]
+    rREQ001_8 --&gt; rREQ001_8_5
+    rREQ001_9[&quot;REQ-001.9 系统管理&quot;]
+    rREQ001 --&gt; rREQ001_9
+    rREQ001_9_1[&quot;REQ-001.9.1 操作员管理&quot;]
+    rREQ001_9 --&gt; rREQ001_9_1
+    rREQ001_9_2[&quot;REQ-001.9.2 菜单权限配置&quot;]
+    rREQ001_9 --&gt; rREQ001_9_2
+    rREQ002[&quot;REQ-002 性能需求&quot;]
+    rREQ002_1[&quot;REQ-002.1 操作响应性能 ⚠&quot;]
+    rREQ002 --&gt; rREQ002_1
+    rREQ002_2[&quot;REQ-002.2 低配运行能力&quot;]
+    rREQ002 --&gt; rREQ002_2
+    rREQ003[&quot;REQ-003 数据需求&quot;]
+    rREQ003_1[&quot;REQ-003.1 员工主数据&quot;]
+    rREQ003 --&gt; rREQ003_1
+    rREQ003_2[&quot;REQ-003.2 权限数据模型&quot;]
+    rREQ003 --&gt; rREQ003_2
+    rREQ003_3[&quot;REQ-003.3 培训与考评数据&quot;]
+    rREQ003 --&gt; rREQ003_3
+    rREQ003_4[&quot;REQ-003.4 薪资数据&quot;]
+    rREQ003 --&gt; rREQ003_4
+    rREQ003_5[&quot;REQ-003.5 奖惩与积分数据&quot;]
+    rREQ003 --&gt; rREQ003_5
+    rREQ003_6[&quot;REQ-003.6 统计维度数据&quot;]
+    rREQ003 --&gt; rREQ003_6
+    rREQ003_7[&quot;REQ-003.7 基础信息数据&quot;]
+    rREQ003 --&gt; rREQ003_7
+    rREQ003_8[&quot;REQ-003.8 数据交换格式&quot;]
+    rREQ003 --&gt; rREQ003_8
+    rREQ004[&quot;REQ-004 部署需求&quot;]
+    rREQ004_1[&quot;REQ-004.1 部署形态&quot;]
+    rREQ004 --&gt; rREQ004_1
+    rREQ004_2[&quot;REQ-004.2 服务器运行环境&quot;]
+    rREQ004 --&gt; rREQ004_2
+    rREQ004_3[&quot;REQ-004.3 安装包大小&quot;]
+    rREQ004 --&gt; rREQ004_3
+    rREQ004_4[&quot;REQ-004.4 客户端浏览器环境&quot;]
+    rREQ004 --&gt; rREQ004_4
+    rREQ004_5[&quot;REQ-004.5 数据库环境&quot;]
+    rREQ004 --&gt; rREQ004_5
+    rREQ005[&quot;REQ-005 安全需求&quot;]
+    rREQ005_1[&quot;REQ-005.1 身份验证&quot;]
+    rREQ005 --&gt; rREQ005_1
+    rREQ005_2[&quot;REQ-005.2 RBAC鉴权&quot;]
+    rREQ005 --&gt; rREQ005_2
+    rREQ005_3[&quot;REQ-005.3 操作审计日志&quot;]
+    rREQ005 --&gt; rREQ005_3
+    rREQ005_4[&quot;REQ-005.4 保密级别授权&quot;]
+    rREQ005 --&gt; rREQ005_4
+    rREQ006[&quot;REQ-006 接口需求&quot;]
+    rREQ006_1[&quot;REQ-006.1 前后端数据接口&quot;]
+    rREQ006 --&gt; rREQ006_1
+    rREQ006_2[&quot;REQ-006.2 在线讯息接口&quot;]
+    rREQ006 --&gt; rREQ006_2
+    rREQ006_3[&quot;REQ-006.3 数据导入导出接口&quot;]
+    rREQ006 --&gt; rREQ006_3</pre></section>
+<section><h2>composition-tree</h2><pre class='mermaid'>flowchart TD
+    mMOD00[&quot;📦 MOD-00 人力资源管理系统&quot;]
+    mMOD01[&quot;📦 MOD-01 员工资料管理子系统&quot;]
+    mMOD00 --&gt; mMOD01
+    mMOD11[&quot;🧩 MOD-11 基本资料管理模块&quot;]
+    mMOD01 --&gt; mMOD11
+    mMOD12[&quot;🧩 MOD-12 高级资料查询模块&quot;]
+    mMOD01 --&gt; mMOD12
+    mMOD02[&quot;📦 MOD-02 员工奖惩管理子系统&quot;]
+    mMOD00 --&gt; mMOD02
+    mMOD21[&quot;🧩 MOD-21 添加奖惩模块&quot;]
+    mMOD02 --&gt; mMOD21
+    mMOD22[&quot;🧩 MOD-22 奖惩管理列表模块&quot;]
+    mMOD02 --&gt; mMOD22
+    mMOD03[&quot;📦 MOD-03 员工培训与考评子系统&quot;]
+    mMOD00 --&gt; mMOD03
+    mMOD31[&quot;🧩 MOD-31 培训管理模块&quot;]
+    mMOD03 --&gt; mMOD31
+    mMOD32[&quot;🧩 MOD-32 考评管理模块&quot;]
+    mMOD03 --&gt; mMOD32
+    mMOD04[&quot;🧩 MOD-04 员工调动管理模块&quot;]
+    mMOD00 --&gt; mMOD04
+    mMOD05[&quot;📦 MOD-05 薪资管理子系统&quot;]
+    mMOD00 --&gt; mMOD05
+    mMOD51[&quot;🧩 MOD-51 工资账套管理模块&quot;]
+    mMOD05 --&gt; mMOD51
+    mMOD52[&quot;🧩 MOD-52 员工账套设置模块&quot;]
+    mMOD05 --&gt; mMOD52
+    mMOD53[&quot;🧩 MOD-53 工资表管理模块&quot;]
+    mMOD05 --&gt; mMOD53
+    mMOD06[&quot;📦 MOD-06 统计分析子系统&quot;]
+    mMOD00 --&gt; mMOD06
+    mMOD61[&quot;🧩 MOD-61 员工积分统计模块&quot;]
+    mMOD06 --&gt; mMOD61
+    mMOD62[&quot;🧩 MOD-62 人事信息分析模块&quot;]
+    mMOD06 --&gt; mMOD62
+    mMOD63[&quot;🧩 MOD-63 人事记录分析模块&quot;]
+    mMOD06 --&gt; mMOD63
+    mMOD07[&quot;🧩 MOD-07 人事通讯模块&quot;]
+    mMOD00 --&gt; mMOD07
+    mMOD08[&quot;📦 MOD-08 基础信息设置子系统&quot;]
+    mMOD00 --&gt; mMOD08
+    mMOD81[&quot;🧩 MOD-81 部门管理模块&quot;]
+    mMOD08 --&gt; mMOD81
+    mMOD82[&quot;🧩 MOD-82 职位管理模块&quot;]
+    mMOD08 --&gt; mMOD82
+    mMOD83[&quot;🧩 MOD-83 职称管理模块&quot;]
+    mMOD08 --&gt; mMOD83
+    mMOD84[&quot;🧩 MOD-84 奖惩规则管理模块&quot;]
+    mMOD08 --&gt; mMOD84
+    mMOD85[&quot;🧩 MOD-85 权限组管理模块&quot;]
+    mMOD08 --&gt; mMOD85
+    mMOD09[&quot;📦 MOD-09 系统管理子系统&quot;]
+    mMOD00 --&gt; mMOD09
+    mMOD91[&quot;🧩 MOD-91 操作员管理模块&quot;]
+    mMOD09 --&gt; mMOD91
+    mMOD92[&quot;🧩 MOD-92 菜单权限配置模块&quot;]
+    mMOD09 --&gt; mMOD92
+    mMOD10[&quot;🔧 MOD-10 RBAC 安全服务&quot;]
+    mMOD00 --&gt; mMOD10
+    mMOD20[&quot;🗄️ MOD-20 数据持久层&quot;]
+    mMOD00 --&gt; mMOD20
+    mMOD40[&quot;🔧 MOD-40 前后端交互服务&quot;]
+    mMOD00 --&gt; mMOD40</pre></section>
+<section><h2>architecture-layers</h2><pre class='mermaid'>flowchart TD
+    subgraph lLAY01[&quot;LAY-01 应用层（前端应用）&quot;]
+        mMOD11(&quot;MOD-11&quot;)
+        mMOD12(&quot;MOD-12&quot;)
+        mMOD21(&quot;MOD-21&quot;)
+        mMOD22(&quot;MOD-22&quot;)
+        mMOD31(&quot;MOD-31&quot;)
+        mMOD32(&quot;MOD-32&quot;)
+        mMOD04(&quot;MOD-04&quot;)
+        mMOD51(&quot;MOD-51&quot;)
+        mMOD52(&quot;MOD-52&quot;)
+        mMOD53(&quot;MOD-53&quot;)
+        mMOD61(&quot;MOD-61&quot;)
+        mMOD62(&quot;MOD-62&quot;)
+        mMOD63(&quot;MOD-63&quot;)
+        mMOD07(&quot;MOD-07&quot;)
+        mMOD81(&quot;MOD-81&quot;)
+        mMOD82(&quot;MOD-82&quot;)
+        mMOD83(&quot;MOD-83&quot;)
+        mMOD84(&quot;MOD-84&quot;)
+        mMOD85(&quot;MOD-85&quot;)
+        mMOD91(&quot;MOD-91&quot;)
+        mMOD92(&quot;MOD-92&quot;)
+    end
+    subgraph lLAY02[&quot;LAY-02 接口层（前后端交互服务）&quot;]
+        mMOD40(&quot;MOD-40&quot;)
+    end
+    subgraph lLAY03[&quot;LAY-03 业务逻辑层（后端服务）&quot;]
+        mMOD10(&quot;MOD-10&quot;)
+    end
+    subgraph lLAY04[&quot;LAY-04 数据层（持久化存储）&quot;]
+        mMOD20(&quot;MOD-20&quot;)
+    end
+    lLAY01 --&gt; lLAY02
+    lLAY02 --&gt; lLAY03
+    lLAY03 --&gt; lLAY04</pre></section>
+<section><h2>dataflow-interfaces</h2><pre class='mermaid'>flowchart LR
+    mMOD21[&quot;MOD-21&quot;] --&gt; |&quot;DF-01 奖惩记录&quot;| mMOD20[&quot;MOD-20&quot;]
+    mMOD20[&quot;MOD-20&quot;] --&gt; |&quot;DF-02 奖惩积分数据&quot;| mMOD61[&quot;MOD-61&quot;]
+    mMOD51[&quot;MOD-51&quot;] --&gt; |&quot;DF-03 工资账套定义与当前套账&quot;| mMOD20[&quot;MOD-20&quot;]
+    mMOD20[&quot;MOD-20&quot;] --&gt; |&quot;DF-04 工资表数据（按职称/部门筛选）&quot;| mMOD53[&quot;MOD-53&quot;]
+    mMOD20[&quot;MOD-20&quot;] --&gt; |&quot;DF-05 人事维度分布数据（7 维）&quot;| mMOD62[&quot;MOD-62&quot;]
+    mMOD11[&quot;MOD-11&quot;] --&gt; |&quot;DF-06 员工档案与高级资料关联&quot;| mMOD12[&quot;MOD-12&quot;]
+    mMOD10[&quot;MOD-10&quot;]
+    mMOD92[&quot;MOD-92&quot;]
+    mMOD10 &lt;-. &quot;IF-01 登录认证接口&quot; .-&gt; mMOD92
+    mMOD40[&quot;MOD-40&quot;]
+    mMOD07[&quot;MOD-07&quot;]
+    mMOD40 &lt;-. &quot;IF-02 在线讯息接口&quot; .-&gt; mMOD07
+    mMOD40[&quot;MOD-40&quot;]
+    mMOD11[&quot;MOD-11&quot;]
+    mMOD40 &lt;-. &quot;IF-03 Excel 导入导出接口&quot; .-&gt; mMOD11
+    mMOD40[&quot;MOD-40&quot;]
+    mMOD11[&quot;MOD-11&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD11
+    mMOD21[&quot;MOD-21&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD21
+    mMOD31[&quot;MOD-31&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD31
+    mMOD51[&quot;MOD-51&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD51
+    mMOD53[&quot;MOD-53&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD53
+    mMOD61[&quot;MOD-61&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD61
+    mMOD62[&quot;MOD-62&quot;]
+    mMOD40 &lt;-. &quot;IF-04 业务数据接口&quot; .-&gt; mMOD62</pre></section>
+<section><h2>process-prc-001</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [用户] 输入用户名密码提交登录表单 (MOD-92)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 自定义验证与表单验证 (MOD-10)&quot;]
+    s02x{&#x27;表单校验不通过→拦截并提示&#x27;}
+    s02 -. 异常 .-&gt; s02x
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 身份验证通过后获取当前用户的所有角色 (MOD-10)&quot;]
+    s03 --&gt; s04
+    s04[&quot;S04 [系统] 根据角色加载对应的权限菜单（默认不加载无权限菜单） (MOD-92)&quot;]
+    s04 --&gt; s05
+    s05[&quot;S05 [用户] 发起业务操作或直接输入 URL 访问 (MOD-11)&quot;]
+    s05 --&gt; s06
+    s06[&quot;S06 [系统] 请求路径分析与 Spring Security 鉴权，判断角色是否可访问菜单资源 (MOD-10)&quot;]
+    s06x{&#x27;未授权→拦截不放行&#x27;}
+    s06 -. 异常 .-&gt; s06x
+    s06 --&gt; s07
+    s07[&quot;S07 [系统] 放行响应资源并记录操作日志 (MOD-10)&quot;]
+    s07 --&gt; END([END])</pre></section>
+<section><h2>process-prc-002</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 在基本资料管理录入员工信息 (MOD-11)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 必填项校验（工号以外全部必填） (MOD-11)&quot;]
+    s02x{&#x27;必填缺失→表单校验拦截&#x27;}
+    s02 -. 异常 .-&gt; s02x
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 数据库自动生成员工工号 (MOD-20)&quot;]
+    s03 --&gt; s04
+    s04[&quot;S04 [系统] 保存员工基本档案 (MOD-20)&quot;]
+    s04 --&gt; s05
+    s05[&quot;S05 [HR] 维护高级资料（培训/考评/工资信息） (MOD-12)&quot;]
+    s05 --&gt; END([END])</pre></section>
+<section><h2>process-prc-003</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 在奖惩管理中选择员工（穿梭框/tab） (MOD-21)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [HR] 填写奖惩记录并保存（同一员工可多条 1:N） (MOD-21)&quot;]
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 持久化奖惩记录 (MOD-20)&quot;]
+    s03 --&gt; s04
+    s04[&quot;S04 [系统] 按奖惩规则自动累计员工积分 (MOD-61)&quot;]
+    s04 --&gt; s05
+    s05[&quot;S05 [HR] 在奖惩管理列表查看有奖惩信息的员工与详情 (MOD-22)&quot;]
+    s05 --&gt; END([END])</pre></section>
+<section><h2>process-prc-004</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 批量添加员工培训 (MOD-31)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 在训唯一约束校验（同一员工同期仅一个培训） (MOD-31)&quot;]
+    s02x{&#x27;同期已有在训培训→拒绝添加&#x27;}
+    s02 -. 异常 .-&gt; s02x
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 保存培训记录并展示进度条 (MOD-31)&quot;]
+    s03 --&gt; s04
+    s04[&quot;S04 [HR] 更新培训进度 (MOD-31)&quot;]
+    s04 --&gt; s05
+    s05[&quot;S05 [HR] 培训完成后删除当前培训记录（方可添加新培训） (MOD-31)&quot;]
+    s05 --&gt; END([END])</pre></section>
+<section><h2>process-prc-005</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 批量添加员工评价（评分条/步骤条界面） (MOD-32)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 一对一关系校验（员工与考评 1:1） (MOD-32)&quot;]
+    s02x{&#x27;该员工已有考评→不可重复&#x27;}
+    s02 -. 异常 .-&gt; s02x
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 保存考评结果（考评日期/内容/结果） (MOD-20)&quot;]
+    s03 --&gt; END([END])</pre></section>
+<section><h2>process-prc-006</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 选择员工并填写调动信息（table 内嵌 table） (MOD-04)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 保存调动记录（员工与调动 1:N） (MOD-20)&quot;]
+    s02 --&gt; END([END])</pre></section>
+<section><h2>process-prc-007</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [HR] 维护工资账套各项（奖金/基本工资/提成） (MOD-51)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [HR] 设置当前套账 (MOD-51)&quot;]
+    s02 --&gt; s03
+    s03[&quot;S03 [HR] 为员工设置工资账套 (MOD-52)&quot;]
+    s03 --&gt; s04
+    s04[&quot;S04 [财务] 工资表查询与筛选（按职称/部门），查看套账详情 (MOD-53)&quot;]
+    s04 --&gt; END([END])</pre></section>
+<section><h2>process-prc-008</h2><pre class='mermaid'>flowchart TD
+    s01[&quot;S01 [系统] 用户操作触发前端请求 (MOD-92)&quot;]
+    s01 --&gt; s02
+    s02[&quot;S02 [系统] 前端拦截器统一拦截所有请求 (MOD-40)&quot;]
+    s02 --&gt; s03
+    s03[&quot;S03 [系统] 后端返回数据或消息，前端分析需要返回数据还是消息 (MOD-40)&quot;]
+    s03 --&gt; END([END])</pre></section>
+<script>mermaid.initialize({startOnLoad:true,theme:'default'});</script>
+</body></html>

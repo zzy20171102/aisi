@@ -1,0 +1,1027 @@
+{
+  "schema": "aisi.trace/1",
+  "system_id": "hr-management-system",
+  "generated_at": "2026-08-23T20:38:56",
+  "edges": [
+    {
+      "from": "REQ-001",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-002",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-002.1",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-002.2",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004.1",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004.2",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004.3",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004.4",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-004.5",
+      "to": "MOD-00",
+      "relation": "satisfy",
+      "evidence": "MOD-00.requirements"
+    },
+    {
+      "from": "REQ-001.1",
+      "to": "MOD-01",
+      "relation": "satisfy",
+      "evidence": "MOD-01.requirements"
+    },
+    {
+      "from": "REQ-001.1.1",
+      "to": "MOD-11",
+      "relation": "satisfy",
+      "evidence": "MOD-11.requirements"
+    },
+    {
+      "from": "REQ-001.1.1.1",
+      "to": "MOD-11",
+      "relation": "satisfy",
+      "evidence": "MOD-11.requirements"
+    },
+    {
+      "from": "REQ-001.1.1.2",
+      "to": "MOD-11",
+      "relation": "satisfy",
+      "evidence": "MOD-11.requirements"
+    },
+    {
+      "from": "REQ-001.1.1.3",
+      "to": "MOD-11",
+      "relation": "satisfy",
+      "evidence": "MOD-11.requirements"
+    },
+    {
+      "from": "REQ-001.1.1.4",
+      "to": "MOD-11",
+      "relation": "satisfy",
+      "evidence": "MOD-11.requirements"
+    },
+    {
+      "from": "MOD-11",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-11.layer"
+    },
+    {
+      "from": "REQ-001.1.2",
+      "to": "MOD-12",
+      "relation": "satisfy",
+      "evidence": "MOD-12.requirements"
+    },
+    {
+      "from": "REQ-001.1.2.1",
+      "to": "MOD-12",
+      "relation": "satisfy",
+      "evidence": "MOD-12.requirements"
+    },
+    {
+      "from": "REQ-001.1.2.2",
+      "to": "MOD-12",
+      "relation": "satisfy",
+      "evidence": "MOD-12.requirements"
+    },
+    {
+      "from": "REQ-001.1.2.3",
+      "to": "MOD-12",
+      "relation": "satisfy",
+      "evidence": "MOD-12.requirements"
+    },
+    {
+      "from": "MOD-12",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-12.layer"
+    },
+    {
+      "from": "REQ-001.2",
+      "to": "MOD-02",
+      "relation": "satisfy",
+      "evidence": "MOD-02.requirements"
+    },
+    {
+      "from": "REQ-001.2.1",
+      "to": "MOD-21",
+      "relation": "satisfy",
+      "evidence": "MOD-21.requirements"
+    },
+    {
+      "from": "MOD-21",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-21.layer"
+    },
+    {
+      "from": "REQ-001.2.2",
+      "to": "MOD-22",
+      "relation": "satisfy",
+      "evidence": "MOD-22.requirements"
+    },
+    {
+      "from": "MOD-22",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-22.layer"
+    },
+    {
+      "from": "REQ-001.3",
+      "to": "MOD-03",
+      "relation": "satisfy",
+      "evidence": "MOD-03.requirements"
+    },
+    {
+      "from": "REQ-001.3.1",
+      "to": "MOD-31",
+      "relation": "satisfy",
+      "evidence": "MOD-31.requirements"
+    },
+    {
+      "from": "REQ-001.3.1.1",
+      "to": "MOD-31",
+      "relation": "satisfy",
+      "evidence": "MOD-31.requirements"
+    },
+    {
+      "from": "REQ-001.3.1.2",
+      "to": "MOD-31",
+      "relation": "satisfy",
+      "evidence": "MOD-31.requirements"
+    },
+    {
+      "from": "REQ-001.3.1.3",
+      "to": "MOD-31",
+      "relation": "satisfy",
+      "evidence": "MOD-31.requirements"
+    },
+    {
+      "from": "MOD-31",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-31.layer"
+    },
+    {
+      "from": "REQ-001.3.2",
+      "to": "MOD-32",
+      "relation": "satisfy",
+      "evidence": "MOD-32.requirements"
+    },
+    {
+      "from": "REQ-001.3.2.1",
+      "to": "MOD-32",
+      "relation": "satisfy",
+      "evidence": "MOD-32.requirements"
+    },
+    {
+      "from": "MOD-32",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-32.layer"
+    },
+    {
+      "from": "REQ-001.4",
+      "to": "MOD-04",
+      "relation": "satisfy",
+      "evidence": "MOD-04.requirements"
+    },
+    {
+      "from": "MOD-04",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-04.layer"
+    },
+    {
+      "from": "REQ-001.5",
+      "to": "MOD-05",
+      "relation": "satisfy",
+      "evidence": "MOD-05.requirements"
+    },
+    {
+      "from": "REQ-001.5.1",
+      "to": "MOD-51",
+      "relation": "satisfy",
+      "evidence": "MOD-51.requirements"
+    },
+    {
+      "from": "MOD-51",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-51.layer"
+    },
+    {
+      "from": "REQ-001.5.2",
+      "to": "MOD-52",
+      "relation": "satisfy",
+      "evidence": "MOD-52.requirements"
+    },
+    {
+      "from": "MOD-52",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-52.layer"
+    },
+    {
+      "from": "REQ-001.5.3",
+      "to": "MOD-53",
+      "relation": "satisfy",
+      "evidence": "MOD-53.requirements"
+    },
+    {
+      "from": "MOD-53",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-53.layer"
+    },
+    {
+      "from": "REQ-001.6",
+      "to": "MOD-06",
+      "relation": "satisfy",
+      "evidence": "MOD-06.requirements"
+    },
+    {
+      "from": "REQ-001.6.1",
+      "to": "MOD-61",
+      "relation": "satisfy",
+      "evidence": "MOD-61.requirements"
+    },
+    {
+      "from": "MOD-61",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-61.layer"
+    },
+    {
+      "from": "REQ-001.6.2",
+      "to": "MOD-62",
+      "relation": "satisfy",
+      "evidence": "MOD-62.requirements"
+    },
+    {
+      "from": "MOD-62",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-62.layer"
+    },
+    {
+      "from": "REQ-001.6.3",
+      "to": "MOD-63",
+      "relation": "satisfy",
+      "evidence": "MOD-63.requirements"
+    },
+    {
+      "from": "MOD-63",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-63.layer"
+    },
+    {
+      "from": "REQ-001.7",
+      "to": "MOD-07",
+      "relation": "satisfy",
+      "evidence": "MOD-07.requirements"
+    },
+    {
+      "from": "MOD-07",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-07.layer"
+    },
+    {
+      "from": "REQ-001.8",
+      "to": "MOD-08",
+      "relation": "satisfy",
+      "evidence": "MOD-08.requirements"
+    },
+    {
+      "from": "REQ-001.8.1",
+      "to": "MOD-81",
+      "relation": "satisfy",
+      "evidence": "MOD-81.requirements"
+    },
+    {
+      "from": "MOD-81",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-81.layer"
+    },
+    {
+      "from": "REQ-001.8.2",
+      "to": "MOD-82",
+      "relation": "satisfy",
+      "evidence": "MOD-82.requirements"
+    },
+    {
+      "from": "MOD-82",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-82.layer"
+    },
+    {
+      "from": "REQ-001.8.3",
+      "to": "MOD-83",
+      "relation": "satisfy",
+      "evidence": "MOD-83.requirements"
+    },
+    {
+      "from": "MOD-83",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-83.layer"
+    },
+    {
+      "from": "REQ-001.8.4",
+      "to": "MOD-84",
+      "relation": "satisfy",
+      "evidence": "MOD-84.requirements"
+    },
+    {
+      "from": "MOD-84",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-84.layer"
+    },
+    {
+      "from": "REQ-001.8.5",
+      "to": "MOD-85",
+      "relation": "satisfy",
+      "evidence": "MOD-85.requirements"
+    },
+    {
+      "from": "MOD-85",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-85.layer"
+    },
+    {
+      "from": "REQ-001.9",
+      "to": "MOD-09",
+      "relation": "satisfy",
+      "evidence": "MOD-09.requirements"
+    },
+    {
+      "from": "REQ-001.9.1",
+      "to": "MOD-91",
+      "relation": "satisfy",
+      "evidence": "MOD-91.requirements"
+    },
+    {
+      "from": "MOD-91",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-91.layer"
+    },
+    {
+      "from": "REQ-001.9.2",
+      "to": "MOD-92",
+      "relation": "satisfy",
+      "evidence": "MOD-92.requirements"
+    },
+    {
+      "from": "MOD-92",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "MOD-92.layer"
+    },
+    {
+      "from": "REQ-005",
+      "to": "MOD-10",
+      "relation": "satisfy",
+      "evidence": "MOD-10.requirements"
+    },
+    {
+      "from": "REQ-005.1",
+      "to": "MOD-10",
+      "relation": "satisfy",
+      "evidence": "MOD-10.requirements"
+    },
+    {
+      "from": "REQ-005.2",
+      "to": "MOD-10",
+      "relation": "satisfy",
+      "evidence": "MOD-10.requirements"
+    },
+    {
+      "from": "REQ-005.3",
+      "to": "MOD-10",
+      "relation": "satisfy",
+      "evidence": "MOD-10.requirements"
+    },
+    {
+      "from": "REQ-005.4",
+      "to": "MOD-10",
+      "relation": "satisfy",
+      "evidence": "MOD-10.requirements"
+    },
+    {
+      "from": "MOD-10",
+      "to": "LAY-03",
+      "relation": "allocate",
+      "evidence": "MOD-10.layer"
+    },
+    {
+      "from": "REQ-003",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.1",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.2",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.3",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.4",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.5",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.6",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.7",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "REQ-003.8",
+      "to": "MOD-20",
+      "relation": "satisfy",
+      "evidence": "MOD-20.requirements"
+    },
+    {
+      "from": "MOD-20",
+      "to": "LAY-04",
+      "relation": "allocate",
+      "evidence": "MOD-20.layer"
+    },
+    {
+      "from": "REQ-006",
+      "to": "MOD-40",
+      "relation": "satisfy",
+      "evidence": "MOD-40.requirements"
+    },
+    {
+      "from": "REQ-006.1",
+      "to": "MOD-40",
+      "relation": "satisfy",
+      "evidence": "MOD-40.requirements"
+    },
+    {
+      "from": "REQ-006.2",
+      "to": "MOD-40",
+      "relation": "satisfy",
+      "evidence": "MOD-40.requirements"
+    },
+    {
+      "from": "REQ-006.3",
+      "to": "MOD-40",
+      "relation": "satisfy",
+      "evidence": "MOD-40.requirements"
+    },
+    {
+      "from": "MOD-40",
+      "to": "LAY-02",
+      "relation": "allocate",
+      "evidence": "MOD-40.layer"
+    },
+    {
+      "from": "MOD-11",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-12",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-21",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-22",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-31",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-32",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-04",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-51",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-52",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-53",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-61",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-62",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-63",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-07",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-81",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-82",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-83",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-84",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-85",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-91",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-92",
+      "to": "LAY-01",
+      "relation": "allocate",
+      "evidence": "LAY-01.modules"
+    },
+    {
+      "from": "MOD-40",
+      "to": "LAY-02",
+      "relation": "allocate",
+      "evidence": "LAY-02.modules"
+    },
+    {
+      "from": "MOD-10",
+      "to": "LAY-03",
+      "relation": "allocate",
+      "evidence": "LAY-03.modules"
+    },
+    {
+      "from": "MOD-20",
+      "to": "LAY-04",
+      "relation": "allocate",
+      "evidence": "LAY-04.modules"
+    },
+    {
+      "from": "SVC-01",
+      "to": "MOD-10",
+      "relation": "connects",
+      "evidence": "SVC-01.module"
+    },
+    {
+      "from": "SVC-02",
+      "to": "MOD-40",
+      "relation": "connects",
+      "evidence": "SVC-02.module"
+    },
+    {
+      "from": "SVC-03",
+      "to": "MOD-40",
+      "relation": "connects",
+      "evidence": "SVC-03.module"
+    },
+    {
+      "from": "SVC-04",
+      "to": "MOD-06",
+      "relation": "connects",
+      "evidence": "SVC-04.module"
+    },
+    {
+      "from": "SVC-05",
+      "to": "MOD-20",
+      "relation": "connects",
+      "evidence": "SVC-05.module"
+    },
+    {
+      "from": "PRC-001.S01",
+      "to": "MOD-92",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S02",
+      "to": "MOD-10",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S03",
+      "to": "MOD-10",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S04",
+      "to": "MOD-92",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S05",
+      "to": "MOD-11",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S06",
+      "to": "MOD-10",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-001.S07",
+      "to": "MOD-10",
+      "relation": "executes",
+      "evidence": "PRC-001 步骤执行模块"
+    },
+    {
+      "from": "PRC-002.S01",
+      "to": "MOD-11",
+      "relation": "executes",
+      "evidence": "PRC-002 步骤执行模块"
+    },
+    {
+      "from": "PRC-002.S02",
+      "to": "MOD-11",
+      "relation": "executes",
+      "evidence": "PRC-002 步骤执行模块"
+    },
+    {
+      "from": "PRC-002.S03",
+      "to": "MOD-20",
+      "relation": "executes",
+      "evidence": "PRC-002 步骤执行模块"
+    },
+    {
+      "from": "PRC-002.S04",
+      "to": "MOD-20",
+      "relation": "executes",
+      "evidence": "PRC-002 步骤执行模块"
+    },
+    {
+      "from": "PRC-002.S05",
+      "to": "MOD-12",
+      "relation": "executes",
+      "evidence": "PRC-002 步骤执行模块"
+    },
+    {
+      "from": "PRC-003.S01",
+      "to": "MOD-21",
+      "relation": "executes",
+      "evidence": "PRC-003 步骤执行模块"
+    },
+    {
+      "from": "PRC-003.S02",
+      "to": "MOD-21",
+      "relation": "executes",
+      "evidence": "PRC-003 步骤执行模块"
+    },
+    {
+      "from": "PRC-003.S03",
+      "to": "MOD-20",
+      "relation": "executes",
+      "evidence": "PRC-003 步骤执行模块"
+    },
+    {
+      "from": "PRC-003.S04",
+      "to": "MOD-61",
+      "relation": "executes",
+      "evidence": "PRC-003 步骤执行模块"
+    },
+    {
+      "from": "PRC-003.S05",
+      "to": "MOD-22",
+      "relation": "executes",
+      "evidence": "PRC-003 步骤执行模块"
+    },
+    {
+      "from": "PRC-004.S01",
+      "to": "MOD-31",
+      "relation": "executes",
+      "evidence": "PRC-004 步骤执行模块"
+    },
+    {
+      "from": "PRC-004.S02",
+      "to": "MOD-31",
+      "relation": "executes",
+      "evidence": "PRC-004 步骤执行模块"
+    },
+    {
+      "from": "PRC-004.S03",
+      "to": "MOD-31",
+      "relation": "executes",
+      "evidence": "PRC-004 步骤执行模块"
+    },
+    {
+      "from": "PRC-004.S04",
+      "to": "MOD-31",
+      "relation": "executes",
+      "evidence": "PRC-004 步骤执行模块"
+    },
+    {
+      "from": "PRC-004.S05",
+      "to": "MOD-31",
+      "relation": "executes",
+      "evidence": "PRC-004 步骤执行模块"
+    },
+    {
+      "from": "PRC-005.S01",
+      "to": "MOD-32",
+      "relation": "executes",
+      "evidence": "PRC-005 步骤执行模块"
+    },
+    {
+      "from": "PRC-005.S02",
+      "to": "MOD-32",
+      "relation": "executes",
+      "evidence": "PRC-005 步骤执行模块"
+    },
+    {
+      "from": "PRC-005.S03",
+      "to": "MOD-20",
+      "relation": "executes",
+      "evidence": "PRC-005 步骤执行模块"
+    },
+    {
+      "from": "PRC-006.S01",
+      "to": "MOD-04",
+      "relation": "executes",
+      "evidence": "PRC-006 步骤执行模块"
+    },
+    {
+      "from": "PRC-006.S02",
+      "to": "MOD-20",
+      "relation": "executes",
+      "evidence": "PRC-006 步骤执行模块"
+    },
+    {
+      "from": "PRC-007.S01",
+      "to": "MOD-51",
+      "relation": "executes",
+      "evidence": "PRC-007 步骤执行模块"
+    },
+    {
+      "from": "PRC-007.S02",
+      "to": "MOD-51",
+      "relation": "executes",
+      "evidence": "PRC-007 步骤执行模块"
+    },
+    {
+      "from": "PRC-007.S03",
+      "to": "MOD-52",
+      "relation": "executes",
+      "evidence": "PRC-007 步骤执行模块"
+    },
+    {
+      "from": "PRC-007.S04",
+      "to": "MOD-53",
+      "relation": "executes",
+      "evidence": "PRC-007 步骤执行模块"
+    },
+    {
+      "from": "PRC-008.S01",
+      "to": "MOD-92",
+      "relation": "executes",
+      "evidence": "PRC-008 步骤执行模块"
+    },
+    {
+      "from": "PRC-008.S02",
+      "to": "MOD-40",
+      "relation": "executes",
+      "evidence": "PRC-008 步骤执行模块"
+    },
+    {
+      "from": "PRC-008.S03",
+      "to": "MOD-40",
+      "relation": "executes",
+      "evidence": "PRC-008 步骤执行模块"
+    },
+    {
+      "from": "MOD-21",
+      "to": "MOD-20",
+      "relation": "connects",
+      "evidence": "DF-01:奖惩记录"
+    },
+    {
+      "from": "MOD-20",
+      "to": "MOD-61",
+      "relation": "connects",
+      "evidence": "DF-02:奖惩积分数据"
+    },
+    {
+      "from": "MOD-51",
+      "to": "MOD-20",
+      "relation": "connects",
+      "evidence": "DF-03:工资账套定义与当前套账"
+    },
+    {
+      "from": "MOD-20",
+      "to": "MOD-53",
+      "relation": "connects",
+      "evidence": "DF-04:工资表数据（按职称/部门筛选）"
+    },
+    {
+      "from": "MOD-20",
+      "to": "MOD-62",
+      "relation": "connects",
+      "evidence": "DF-05:人事维度分布数据（7 维）"
+    },
+    {
+      "from": "MOD-11",
+      "to": "MOD-12",
+      "relation": "connects",
+      "evidence": "DF-06:员工档案与高级资料关联"
+    },
+    {
+      "from": "MOD-10",
+      "to": "MOD-92",
+      "relation": "connects",
+      "evidence": "IF-01:登录认证接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-07",
+      "relation": "connects",
+      "evidence": "IF-02:在线讯息接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-11",
+      "relation": "connects",
+      "evidence": "IF-03:Excel 导入导出接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-11",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-21",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-31",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-51",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-53",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-61",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    },
+    {
+      "from": "MOD-40",
+      "to": "MOD-62",
+      "relation": "connects",
+      "evidence": "IF-04:业务数据接口"
+    }
+  ]
+}

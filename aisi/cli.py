@@ -8,6 +8,10 @@ from pathlib import Path
 
 from . import __version__
 from .lint import lint
+from .render import all_diagrams, report_markdown, viewer_html
+from .sysml_export import check_balance, export_architecture, export_composition, \
+    export_processes, export_requirements
+from .trace import analyze, build_edges, render_markdown as trace_md
 from .validator import load_schema, validate
 from .workspace import VIEW_ORDER, Workspace, find_workspace, init_system
 
@@ -171,6 +175,101 @@ def cmd_clarify(a) -> int:
     return EXIT_OK
 
 
+def _require_all_approved(ws: Workspace, force: bool, reason: str) -> list[dict] | None:
+    pending = [v for v in VIEW_ORDER if ws.state(v) != "approved"]
+    if not pending:
+        return None
+    if not force:
+        return [{"code": "gate_locked", "message": f"视图尚未全部 approved: {', '.join(pending)}",
+                 "suggestion": "先完成门禁，或使用 --force --reason <原因>"}]
+    if not reason:
+        return [{"code": "force_requires_reason", "message": "--force 必须附带 --reason"}]
+    for v in pending:
+        ws.add_force_override(v, reason)
+    return None
+
+
+def cmd_trace(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    err = _require_all_approved(ws, a.force, a.reason)
+    if err:
+        return fail(err, EXIT_GATE)
+    edges = build_edges(ws)
+    issues = analyze(ws, edges)
+    trace_data = {"schema": "aisi.trace/1", "system_id": ws.manifest["system_id"],
+                  "generated_at": __import__("datetime").datetime.now().isoformat(timespec="seconds"),
+                  "edges": edges}
+    (ws.base / "trace.json").write_text(
+        json.dumps(trace_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (ws.base / "render").mkdir(exist_ok=True)
+    (ws.base / "render" / "trace.md").write_text(trace_md(ws, edges, issues), encoding="utf-8")
+    emit({"ok": True, "edges": len(edges), "issues": issues,
+          "outputs": ["trace.json", "render/trace.md"],
+          "next_action": "aisi export sysml && aisi render --format all"})
+    return EXIT_OK
+
+
+def cmd_export(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    err = _require_all_approved(ws, a.force, a.reason)
+    if err:
+        return fail(err, EXIT_GATE)
+    exporters = {"requirements": export_requirements, "composition": export_composition,
+                 "architecture": export_architecture, "processes": export_processes}
+    out_dir = ws.base / "sysml"
+    out_dir.mkdir(exist_ok=True)
+    results, errors = [], []
+    for name, fn in exporters.items():
+        text = fn(ws)
+        errs = check_balance(text)
+        p = out_dir / f"{name}.sysml"
+        p.write_text(text, encoding="utf-8")
+        results.append(str(p))
+        errors += [{"view": name, "message": e} for e in errs]
+    if errors:
+        return fail(errors, EXIT_CONTRACT)
+    emit({"ok": True, "outputs": results,
+          "next_action": "用 SysML v2 工具（SysON 等）打开渲染"})
+    return EXIT_OK
+
+
+def cmd_render(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    err = _require_all_approved(ws, a.force, a.reason)
+    if err:
+        return fail(err, EXIT_GATE)
+    diagrams = all_diagrams(ws)
+    ddir = ws.base / "render" / "diagrams"
+    ddir.mkdir(parents=True, exist_ok=True)
+    outputs = []
+    for name, code in diagrams.items():
+        p = ddir / f"{name}.mmd"
+        p.write_text(code + "\n", encoding="utf-8")
+        outputs.append(str(p))
+    if a.format in ("html", "all"):
+        p = ws.base / "render" / "viewer.html"
+        p.write_text(viewer_html(ws, diagrams), encoding="utf-8")
+        outputs.append(str(p))
+    if a.format in ("md", "all"):
+        issues = analyze(ws, build_edges(ws))
+        p = ws.base / "reports" / "system-specification.md"
+        p.parent.mkdir(exist_ok=True)
+        p.write_text(report_markdown(ws, issues, diagrams), encoding="utf-8")
+        outputs.append(str(p))
+    emit({"ok": True, "format": a.format, "diagrams": len(diagrams), "outputs": outputs,
+          "next_action": "浏览器打开 render/viewer.html 查看图集；报告见 reports/"})
+    return EXIT_OK
+
+
 def main(argv: list[str] | None = None) -> int:
     for s in (sys.stdout, sys.stderr):
         if hasattr(s, "reconfigure"):
@@ -213,6 +312,25 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--answer", required=True, help="澄清答案")
     p.add_argument("--path", default=None)
     p.set_defaults(func=cmd_clarify)
+
+    p = sub.add_parser("trace", help="生成四视图追踪矩阵（trace.json + trace.md）")
+    p.add_argument("--path", default=None)
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_trace)
+
+    p = sub.add_parser("export", help="导出 SysML v2（sysml/*.sysml）")
+    p.add_argument("--path", default=None)
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_export)
+
+    p = sub.add_parser("render", help="渲染图文（mermaid/html/md 报告）")
+    p.add_argument("--format", choices=["md", "html", "all"], default="all")
+    p.add_argument("--path", default=None)
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_render)
 
     args = ap.parse_args(argv)
     return args.func(args)

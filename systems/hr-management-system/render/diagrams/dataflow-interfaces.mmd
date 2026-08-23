@@ -1,0 +1,31 @@
+flowchart LR
+    mMOD21["MOD-21"] --> |"DF-01 奖惩记录"| mMOD20["MOD-20"]
+    mMOD20["MOD-20"] --> |"DF-02 奖惩积分数据"| mMOD61["MOD-61"]
+    mMOD51["MOD-51"] --> |"DF-03 工资账套定义与当前套账"| mMOD20["MOD-20"]
+    mMOD20["MOD-20"] --> |"DF-04 工资表数据（按职称/部门筛选）"| mMOD53["MOD-53"]
+    mMOD20["MOD-20"] --> |"DF-05 人事维度分布数据（7 维）"| mMOD62["MOD-62"]
+    mMOD11["MOD-11"] --> |"DF-06 员工档案与高级资料关联"| mMOD12["MOD-12"]
+    mMOD10["MOD-10"]
+    mMOD92["MOD-92"]
+    mMOD10 <-. "IF-01 登录认证接口" .-> mMOD92
+    mMOD40["MOD-40"]
+    mMOD07["MOD-07"]
+    mMOD40 <-. "IF-02 在线讯息接口" .-> mMOD07
+    mMOD40["MOD-40"]
+    mMOD11["MOD-11"]
+    mMOD40 <-. "IF-03 Excel 导入导出接口" .-> mMOD11
+    mMOD40["MOD-40"]
+    mMOD11["MOD-11"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD11
+    mMOD21["MOD-21"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD21
+    mMOD31["MOD-31"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD31
+    mMOD51["MOD-51"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD51
+    mMOD53["MOD-53"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD53
+    mMOD61["MOD-61"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD61
+    mMOD62["MOD-62"]
+    mMOD40 <-. "IF-04 业务数据接口" .-> mMOD62
