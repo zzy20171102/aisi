@@ -1,7 +1,7 @@
 # AISI 项目知识库索引
 
 > ⚠️ 本文件由 kb.py 自动生成（save/rebuild 时同步刷新），请勿手工编辑。
-> 最后更新：2026-08-23 ｜ 总条目 2 ｜ active 2
+> 最后更新：2026-08-23 ｜ 总条目 4 ｜ active 4
 
 ## 使用说明
 
@@ -40,7 +40,7 @@
 
 | ID | 标题 | 标签 | 状态 | 更新 | 文件 |
 | -- | ---- | ---- | ---- | ---- | ---- |
-| （暂无） | | | | | |
+| KB-2026-0004 | 需求拆解的三轮迭代经验：粗粒度→层级化→类型分组（附待澄清机制） | requirements,sysml,gjb438c,workflow | active | 2026-08-23 | knowledge/lessons/KB-2026-0004-requirement-decomposition-iteration.md |
 
 ## entities/ — 实体卡片
 
@@ -48,7 +48,7 @@
 
 | ID | 标题 | 标签 | 状态 | 更新 | 文件 |
 | -- | ---- | ---- | ---- | ---- | ---- |
-| （暂无） | | | | | |
+| KB-2026-0003 | AISI 项目进展快照（2026-08-23） | progress,milestone,aisi | active | 2026-08-23 | knowledge/entities/KB-2026-0003-aisi-progress-2026-08-23.md |
 
 ## domains/ — 领域知识
 
