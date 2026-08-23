@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.trace/1",
+  "title": "四视图追踪矩阵",
+  "type": "object",
+  "required": ["schema", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.trace/1" },
+    "system_id": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "edges": { "type": "array", "items": { "$ref": "#/definitions/edge" } }
+  },
+  "definitions": {
+    "edge": {
+      "type": "object",
+      "required": ["from", "to", "relation"],
+      "additionalProperties": false,
+      "properties": {
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "relation": { "enum": ["satisfy", "allocate", "executes", "refine", "connects"] },
+        "evidence": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "aisi.processes/1",
+  "processes": [
+    {"id": "PRC-001", "name": "用户登录与访问控制流程", "trigger": "管理员或操作员访问系统", "actors": ["用户", "系统"], "steps": [
+      {"id": "S01", "actor": "用户", "action": "输入用户名密码提交登录表单", "module": "MOD-92", "inputs": ["用户凭证"], "outputs": ["登录请求"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "自定义验证与表单验证", "module": "MOD-10", "inputs": ["登录请求"], "outputs": ["验证结果"], "next": ["S03"], "exceptions": ["表单校验不通过→拦截并提示"]},
+      {"id": "S03", "actor": "系统", "action": "身份验证通过后获取当前用户的所有角色", "module": "MOD-10", "inputs": ["验证结果"], "outputs": ["用户角色列表"], "next": ["S04"], "exceptions": []},
+      {"id": "S04", "actor": "系统", "action": "根据角色加载对应的权限菜单（默认不加载无权限菜单）", "module": "MOD-92", "inputs": ["用户角色列表"], "outputs": ["权限菜单"], "next": ["S05"], "exceptions": []},
+      {"id": "S05", "actor": "用户", "action": "发起业务操作或直接输入 URL 访问", "module": "MOD-11", "inputs": ["权限菜单"], "outputs": ["业务请求"], "next": ["S06"], "exceptions": []},
+      {"id": "S06", "actor": "系统", "action": "请求路径分析与 Spring Security 鉴权，判断角色是否可访问菜单资源", "module": "MOD-10", "inputs": ["业务请求"], "outputs": ["鉴权结果"], "next": ["S07"], "exceptions": ["未授权→拦截不放行"]},
+      {"id": "S07", "actor": "系统", "action": "放行响应资源并记录操作日志", "module": "MOD-10", "inputs": ["鉴权结果"], "outputs": ["菜单资源", "操作日志"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-002", "name": "员工入职建档流程", "trigger": "新员工入职", "actors": ["HR"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "在基本资料管理录入员工信息", "module": "MOD-11", "inputs": ["员工纸质资料"], "outputs": ["录入表单"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "必填项校验（工号以外全部必填）", "module": "MOD-11", "inputs": ["录入表单"], "outputs": ["校验结果"], "next": ["S03"], "exceptions": ["必填缺失→表单校验拦截"]},
+      {"id": "S03", "actor": "系统", "action": "数据库自动生成员工工号", "module": "MOD-20", "inputs": ["校验结果"], "outputs": ["员工工号"], "next": ["S04"], "exceptions": []},
+      {"id": "S04", "actor": "系统", "action": "保存员工基本档案", "module": "MOD-20", "inputs": ["员工工号", "录入表单"], "outputs": ["员工档案记录"], "next": ["S05"], "exceptions": []},
+      {"id": "S05", "actor": "HR", "action": "维护高级资料（培训/考评/工资信息）", "module": "MOD-12", "inputs": ["员工档案记录"], "outputs": ["高级资料关联"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-003", "name": "员工奖惩办理流程", "trigger": "员工获得奖励或处分", "actors": ["HR"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "在奖惩管理中选择员工（穿梭框/tab）", "module": "MOD-21", "inputs": ["员工列表"], "outputs": ["目标员工"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "HR", "action": "填写奖惩记录并保存（同一员工可多条 1:N）", "module": "MOD-21", "inputs": ["目标员工", "奖惩内容"], "outputs": ["奖惩记录"], "next": ["S03"], "exceptions": []},
+      {"id": "S03", "actor": "系统", "action": "持久化奖惩记录", "module": "MOD-20", "inputs": ["奖惩记录"], "outputs": ["奖惩数据"], "next": ["S04"], "exceptions": []},
+      {"id": "S04", "actor": "系统", "action": "按奖惩规则自动累计员工积分", "module": "MOD-61", "inputs": ["奖惩数据"], "outputs": ["员工积分"], "next": ["S05"], "exceptions": []},
+      {"id": "S05", "actor": "HR", "action": "在奖惩管理列表查看有奖惩信息的员工与详情", "module": "MOD-22", "inputs": ["奖惩数据"], "outputs": ["奖惩列表展示"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-004", "name": "员工培训办理流程", "trigger": "员工参加培训", "actors": ["HR"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "批量添加员工培训", "module": "MOD-31", "inputs": ["员工列表", "培训计划"], "outputs": ["培训记录草稿"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "在训唯一约束校验（同一员工同期仅一个培训）", "module": "MOD-31", "inputs": ["培训记录草稿"], "outputs": ["校验结果"], "next": ["S03"], "exceptions": ["同期已有在训培训→拒绝添加"]},
+      {"id": "S03", "actor": "系统", "action": "保存培训记录并展示进度条", "module": "MOD-31", "inputs": ["校验结果"], "outputs": ["培训记录"], "next": ["S04"], "exceptions": []},
+      {"id": "S04", "actor": "HR", "action": "更新培训进度", "module": "MOD-31", "inputs": ["培训记录"], "outputs": ["进度更新"], "next": ["S05"], "exceptions": []},
+      {"id": "S05", "actor": "HR", "action": "培训完成后删除当前培训记录（方可添加新培训）", "module": "MOD-31", "inputs": ["培训记录"], "outputs": ["培训完结"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-005", "name": "员工考评办理流程", "trigger": "考评周期到达", "actors": ["HR"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "批量添加员工评价（评分条/步骤条界面）", "module": "MOD-32", "inputs": ["员工列表", "评价内容"], "outputs": ["评价草稿"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "一对一关系校验（员工与考评 1:1）", "module": "MOD-32", "inputs": ["评价草稿"], "outputs": ["校验结果"], "next": ["S03"], "exceptions": ["该员工已有考评→不可重复"]},
+      {"id": "S03", "actor": "系统", "action": "保存考评结果（考评日期/内容/结果）", "module": "MOD-20", "inputs": ["校验结果"], "outputs": ["考评记录"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-006", "name": "员工调动办理流程", "trigger": "员工岗位/部门变动", "actors": ["HR"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "选择员工并填写调动信息（table 内嵌 table）", "module": "MOD-04", "inputs": ["员工列表", "调动内容"], "outputs": ["调动草稿"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "保存调动记录（员工与调动 1:N）", "module": "MOD-20", "inputs": ["调动草稿"], "outputs": ["调动记录"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-007", "name": "工资管理流程", "trigger": "薪资设定与发放周期", "actors": ["HR", "财务"], "steps": [
+      {"id": "S01", "actor": "HR", "action": "维护工资账套各项（奖金/基本工资/提成）", "module": "MOD-51", "inputs": ["薪资政策"], "outputs": ["账套定义"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "HR", "action": "设置当前套账", "module": "MOD-51", "inputs": ["账套定义"], "outputs": ["当前套账"], "next": ["S03"], "exceptions": []},
+      {"id": "S03", "actor": "HR", "action": "为员工设置工资账套", "module": "MOD-52", "inputs": ["员工列表", "当前套账"], "outputs": ["员工账套关联"], "next": ["S04"], "exceptions": []},
+      {"id": "S04", "actor": "财务", "action": "工资表查询与筛选（按职称/部门），查看套账详情", "module": "MOD-53", "inputs": ["员工账套关联"], "outputs": ["工资表"], "next": ["END"], "exceptions": []}
+    ]},
+    {"id": "PRC-008", "name": "前端请求统一处理流程", "trigger": "任意前端操作触发请求", "actors": ["系统"], "steps": [
+      {"id": "S01", "actor": "系统", "action": "用户操作触发前端请求", "module": "MOD-92", "inputs": ["用户操作"], "outputs": ["HTTP 请求"], "next": ["S02"], "exceptions": []},
+      {"id": "S02", "actor": "系统", "action": "前端拦截器统一拦截所有请求", "module": "MOD-40", "inputs": ["HTTP 请求"], "outputs": ["拦截后请求"], "next": ["S03"], "exceptions": []},
+      {"id": "S03", "actor": "系统", "action": "后端返回数据或消息，前端分析需要返回数据还是消息", "module": "MOD-40", "inputs": ["拦截后请求"], "outputs": ["响应结果"], "next": ["END"], "exceptions": []}
+    ]}
+  ],
+  "dataflows": [
+    {"id": "DF-01", "from": "MOD-21", "to": "MOD-20", "payload": "奖惩记录", "frequency": "实时", "protocol": "内部调用", "interface": "IF-04"},
+    {"id": "DF-02", "from": "MOD-20", "to": "MOD-61", "payload": "奖惩积分数据", "frequency": "奖惩事件触发", "protocol": "内部查询", "interface": "IF-04"},
+    {"id": "DF-03", "from": "MOD-51", "to": "MOD-20", "payload": "工资账套定义与当前套账", "frequency": "实时", "protocol": "内部调用", "interface": "IF-04"},
+    {"id": "DF-04", "from": "MOD-20", "to": "MOD-53", "payload": "工资表数据（按职称/部门筛选）", "frequency": "按需查询", "protocol": "内部查询", "interface": "IF-04"},
+    {"id": "DF-05", "from": "MOD-20", "to": "MOD-62", "payload": "人事维度分布数据（7 维）", "frequency": "按需查询", "protocol": "内部查询", "interface": "IF-04"},
+    {"id": "DF-06", "from": "MOD-11", "to": "MOD-12", "payload": "员工档案与高级资料关联", "frequency": "实时", "protocol": "内部调用", "interface": "IF-04"}
+  ],
+  "interfaces": [
+    {"id": "IF-01", "name": "登录认证接口", "provider": "MOD-10", "consumers": ["MOD-92"], "style": "自定义验证+表单验证", "protocol": "HTTP", "contract_ref": "REQ-005.1", "messages": [
+      {"name": "登录请求", "direction": "request", "fields": ["用户名", "密码"]},
+      {"name": "鉴权结果", "direction": "response", "fields": ["用户角色列表", "权限菜单"]}
+    ]},
+    {"id": "IF-02", "name": "在线讯息接口", "provider": "MOD-40", "consumers": ["MOD-07"], "style": "WebSocket 双向通信", "protocol": "WebSocket", "contract_ref": "REQ-006.2", "messages": [
+      {"name": "讯息报文", "direction": "request", "fields": ["发送者", "接收者", "讯息内容"]}
+    ]},
+    {"id": "IF-03", "name": "Excel 导入导出接口", "provider": "MOD-40", "consumers": ["MOD-11"], "style": "文件流", "protocol": "HTTP", "contract_ref": "REQ-006.3", "messages": [
+      {"name": "导入文件", "direction": "request", "fields": ["员工基本资料 Excel"]},
+      {"name": "导出文件", "direction": "response", "fields": ["员工基本资料 Excel"]}
+    ]},
+    {"id": "IF-04", "name": "业务数据接口", "provider": "MOD-40", "consumers": ["MOD-11", "MOD-21", "MOD-31", "MOD-51", "MOD-53", "MOD-61", "MOD-62"], "style": "REST 风格", "protocol": "HTTP", "contract_ref": "REQ-006.1", "messages": [
+      {"name": "业务请求", "direction": "request", "fields": ["资源路径", "参数"]},
+      {"name": "数据或消息", "direction": "response", "fields": ["业务数据", "处理消息"]}
+    ]}
+  ]
+}

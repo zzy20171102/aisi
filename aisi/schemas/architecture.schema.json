@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.architecture/1",
+  "title": "架构视图（多层自适应）",
+  "type": "object",
+  "required": ["schema", "layers"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.architecture/1" },
+    "layers": { "type": "array", "items": { "$ref": "#/definitions/layer" } },
+    "services": { "type": "array", "items": { "$ref": "#/definitions/service" } },
+    "data_assets": { "type": "array", "items": { "$ref": "#/definitions/dataAsset" } },
+    "deploy_nodes": { "type": "array", "items": { "$ref": "#/definitions/deployNode" } }
+  },
+  "definitions": {
+    "layer": {
+      "type": "object",
+      "required": ["id", "name", "order"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^LAY-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "order": { "type": "integer", "minimum": 1 },
+        "description": { "type": "string" },
+        "technologies": { "type": "array", "items": { "type": "string" } },
+        "modules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["id", "name", "kind", "module"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^SVC-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["business", "model", "algorithm", "data"] },
+        "module": { "type": "string", "pattern": "^MOD-\\d{2,}$" },
+        "api": { "type": "string" },
+        "scalability": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "dataAsset": {
+      "type": "object",
+      "required": ["id", "name", "entities", "store", "owner_module"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^DA-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "entities": { "type": "array", "items": { "type": "string" } },
+        "store": { "type": "string" },
+        "owner_module": { "type": "string", "pattern": "^MOD-\\d{2,}$" },
+        "sensitivity": { "enum": ["公开", "内部", "秘密", "机密"] },
+        "retention": { "type": "string" },
+        "backup": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "deployNode": {
+      "type": "object",
+      "required": ["id", "name", "hosts"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^N-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "hosts": { "type": "array", "items": { "type": "string" } },
+        "spec": { "type": "string" },
+        "protocol": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

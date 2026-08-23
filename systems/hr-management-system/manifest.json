@@ -1,0 +1,16 @@
+{
+  "schema": "aisi.system.manifest/1",
+  "system_id": "hr-management-system",
+  "name": "人力资源管理系统",
+  "description": "黄金样例：基于Spring Boot的人事管理系统（用户提供的设计报告）",
+  "domain": "information-system",
+  "profile": "gjb438c",
+  "standards": [
+    "GJB 2786A",
+    "GJB 438C",
+    "ISO/IEC/IEEE 29148",
+    "SysML v2"
+  ],
+  "created": "2026-08-23",
+  "updated": "2026-08-23"
+}

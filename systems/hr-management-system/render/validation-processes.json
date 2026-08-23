@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "view": "processes",
+  "file": "D:\\workspace\\AISI\\systems\\hr-management-system\\views\\processes.json",
+  "schema": "aisi.processes/1",
+  "warnings": [],
+  "state": "validated",
+  "next_action": "aisi gate review processes",
+  "force_override": false
+}

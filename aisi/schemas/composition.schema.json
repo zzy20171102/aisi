@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.composition/1",
+  "title": "组成视图（功能模块/子系统层级）",
+  "type": "object",
+  "required": ["schema", "modules"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.composition/1" },
+    "modules": { "type": "array", "items": { "$ref": "#/definitions/module" } }
+  },
+  "definitions": {
+    "module": {
+      "type": "object",
+      "required": ["id", "name", "kind", "parent"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^MOD-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["subsystem", "module", "service", "component", "database", "external"] },
+        "parent": { "type": "string", "pattern": "^(MOD-\\d{2,})?$" },
+        "responsibilities": { "type": "array", "items": { "type": "string" } },
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "layer": { "type": "string", "pattern": "^(LAY-\\d{2,})?$" },
+        "provided_interfaces": { "type": "array", "items": { "type": "string" } },
+        "used_interfaces": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

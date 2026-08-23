@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.requirements/1",
+  "title": "需求视图（对齐 ISO/IEC/IEEE 29148 + GJB 438C）",
+  "type": "object",
+  "required": ["schema", "requirements"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.requirements/1" },
+    "requirements": { "type": "array", "items": { "$ref": "#/definitions/requirement" } }
+  },
+  "definitions": {
+    "requirement": {
+      "type": "object",
+      "required": ["id", "name", "text", "type", "priority", "verification", "status", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^REQ-\\d{3,}(\\.\\d+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 4 },
+        "type": { "enum": ["functional", "performance", "interface", "data", "deployment", "safety", "security", "reliability", "usability", "environment", "operability", "constraint"] },
+        "priority": { "enum": ["必须", "应当", "可以"] },
+        "verification": { "enum": ["审查", "分析", "演示", "测试"] },
+        "rationale": { "type": "string" },
+        "fit_criterion": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "type": "string", "minLength": 3 } },
+        "parent": { "type": "string", "pattern": "^(REQ-\\d{3,}(\\.\\d+)*)?$" },
+        "allocations": { "type": "array", "items": { "$ref": "#/definitions/allocation" } },
+        "interfaces": { "type": "array", "items": { "type": "string" } },
+        "measures": { "type": "array", "items": { "$ref": "#/definitions/measure" } },
+        "status": { "enum": ["proposed", "confirmed", "deferred", "rejected"] },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "clarifications": { "type": "array", "items": { "$ref": "#/definitions/clarification" } }
+      }
+    },
+    "allocation": {
+      "type": "object",
+      "required": ["module_id"],
+      "additionalProperties": false,
+      "properties": {
+        "module_id": { "type": "string", "pattern": "^MOD-\\d{2,}$" },
+        "role": { "enum": ["implements", "participates"] }
+      }
+    },
+    "measure": {
+      "type": "object",
+      "required": ["metric", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "metric": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string" },
+        "condition": { "type": "string" }
+      }
+    },
+    "clarification": {
+      "type": "object",
+      "required": ["question"],
+      "additionalProperties": false,
+      "properties": {
+        "question": { "type": "string", "minLength": 1 },
+        "answer": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.processes/1",
+  "title": "流程视图（工作流 + 数据流 + 接口）",
+  "type": "object",
+  "required": ["schema", "processes"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.processes/1" },
+    "processes": { "type": "array", "items": { "$ref": "#/definitions/process" } },
+    "dataflows": { "type": "array", "items": { "$ref": "#/definitions/dataflow" } },
+    "interfaces": { "type": "array", "items": { "$ref": "#/definitions/interface" } }
+  },
+  "definitions": {
+    "process": {
+      "type": "object",
+      "required": ["id", "name", "steps"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^PRC-\\d{3,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "trigger": { "type": "string" },
+        "actors": { "type": "array", "items": { "type": "string" } },
+        "steps": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/step" } }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["id", "actor", "action", "next"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^S\\d{2,}$" },
+        "actor": { "type": "string" },
+        "action": { "type": "string", "minLength": 2 },
+        "module": { "type": "string", "pattern": "^MOD-\\d{2,}$" },
+        "inputs": { "type": "array", "items": { "type": "string" } },
+        "outputs": { "type": "array", "items": { "type": "string" } },
+        "next": { "type": "array", "items": { "type": "string", "pattern": "^(S\\d{2,}|END)$" } },
+        "exceptions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "dataflow": {
+      "type": "object",
+      "required": ["id", "from", "to", "payload"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^DF-\\d{2,}$" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "payload": { "type": "string" },
+        "frequency": { "type": "string" },
+        "protocol": { "type": "string" },
+        "interface": { "type": "string" }
+      }
+    },
+    "interface": {
+      "type": "object",
+      "required": ["id", "name", "provider", "consumers"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^IF-\\d{2,}$" },
+        "name": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string" },
+        "consumers": { "type": "array", "items": { "type": "string" } },
+        "style": { "type": "string" },
+        "protocol": { "type": "string" },
+        "contract_ref": { "type": "string" },
+        "messages": { "type": "array", "items": { "$ref": "#/definitions/message" } }
+      }
+    },
+    "message": {
+      "type": "object",
+      "required": ["name", "direction", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "direction": { "enum": ["request", "response"] },
+        "fields": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

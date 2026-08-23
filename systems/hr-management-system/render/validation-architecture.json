@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "view": "architecture",
+  "file": "D:\\workspace\\AISI\\systems\\hr-management-system\\views\\architecture.json",
+  "schema": "aisi.architecture/1",
+  "warnings": [],
+  "state": "validated",
+  "next_action": "aisi gate review architecture",
+  "force_override": false
+}

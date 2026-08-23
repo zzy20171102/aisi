@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.gates/1",
+  "title": "AISI 阶段门禁状态",
+  "type": "object",
+  "required": ["schema", "views"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.gates/1" },
+    "views": {
+      "type": "object",
+      "required": ["requirements", "composition", "architecture", "processes"],
+      "additionalProperties": false,
+      "properties": {
+        "requirements": { "$ref": "#/definitions/view" },
+        "composition": { "$ref": "#/definitions/view" },
+        "architecture": { "$ref": "#/definitions/view" },
+        "processes": { "$ref": "#/definitions/view" }
+      }
+    },
+    "force_overrides": { "type": "array", "items": { "$ref": "#/definitions/override" } }
+  },
+  "definitions": {
+    "view": {
+      "type": "object",
+      "required": ["state", "history"],
+      "additionalProperties": false,
+      "properties": {
+        "state": { "enum": ["empty", "draft", "validated", "reviewed", "approved"] },
+        "history": { "type": "array", "items": { "$ref": "#/definitions/event" } }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["at", "event", "from", "to"],
+      "additionalProperties": false,
+      "properties": {
+        "at": { "type": "string" },
+        "event": { "type": "string" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "actor": { "type": "string" },
+        "comment": { "type": "string" }
+      }
+    },
+    "override": {
+      "type": "object",
+      "required": ["at", "view", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "at": { "type": "string" },
+        "view": { "type": "string" },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}

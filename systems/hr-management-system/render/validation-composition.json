@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "view": "composition",
+  "file": "D:\\workspace\\AISI\\systems\\hr-management-system\\views\\composition.json",
+  "schema": "aisi.composition/1",
+  "warnings": [],
+  "state": "approved",
+  "next_action": "aisi gate review composition",
+  "force_override": false
+}

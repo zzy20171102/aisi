@@ -1,0 +1,162 @@
+{
+  "schema": "aisi.gates/1",
+  "views": {
+    "requirements": {
+      "state": "approved",
+      "history": [
+        {
+          "at": "2026-08-23T19:21:42",
+          "event": "validate",
+          "from": "empty",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T19:21:42",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T19:44:06",
+          "event": "gate:reject",
+          "from": "reviewed",
+          "to": "draft",
+          "actor": "human-cli",
+          "comment": "需求拆分过粗：员工资料未细分基本/高级资料；奖惩、培训、考评、调动、薪资、统计分析、基础信息设置、系统管理等功能未体现；需建立需求-子需求包含层级（用户审核意见 2026-08-23）"
+        },
+        {
+          "at": "2026-08-23T19:46:12",
+          "event": "validate",
+          "from": "draft",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T19:50:38",
+          "event": "gate:reject",
+          "from": "validated",
+          "to": "draft",
+          "actor": "human-cli",
+          "comment": "按需求类型重组：顶层区分为功能/性能/数据/部署/安全/接口等类型分组，业务功能保留在功能需求子树（用户审核意见 2026-08-23 第二轮）"
+        },
+        {
+          "at": "2026-08-23T19:53:03",
+          "event": "validate",
+          "from": "draft",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T19:57:14",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T19:57:14",
+          "event": "gate:approve",
+          "from": "reviewed",
+          "to": "approved",
+          "actor": "human-cli",
+          "comment": "用户确认通过（2026-08-23）；两处待澄清暂不补充，保留待调研提示"
+        }
+      ]
+    },
+    "composition": {
+      "state": "approved",
+      "history": [
+        {
+          "at": "2026-08-23T19:59:51",
+          "event": "validate",
+          "from": "empty",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:04:25",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:04:25",
+          "event": "gate:approve",
+          "from": "reviewed",
+          "to": "approved",
+          "actor": "human-cli",
+          "comment": "用户确认通过（2026-08-23）：32模块，67/67需求覆盖"
+        }
+      ]
+    },
+    "architecture": {
+      "state": "approved",
+      "history": [
+        {
+          "at": "2026-08-23T20:06:00",
+          "event": "validate",
+          "from": "empty",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:08:26",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:08:27",
+          "event": "gate:approve",
+          "from": "reviewed",
+          "to": "approved",
+          "actor": "human-cli",
+          "comment": "用户确认通过（2026-08-23）：4层架构+5服务+5数据资产+3部署节点"
+        }
+      ]
+    },
+    "processes": {
+      "state": "approved",
+      "history": [
+        {
+          "at": "2026-08-23T20:09:35",
+          "event": "validate",
+          "from": "empty",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:15:09",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-23T20:15:10",
+          "event": "gate:approve",
+          "from": "reviewed",
+          "to": "approved",
+          "actor": "human-cli",
+          "comment": "用户确认通过（2026-08-23）：8流程/6数据流/4接口，四视图全部完成"
+        }
+      ]
+    }
+  },
+  "force_overrides": []
+}

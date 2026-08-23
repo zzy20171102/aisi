@@ -1,0 +1,19 @@
+# 虚拟环境（927 个文件，编辑器 watch 会导致卡死）
+.venv/
+__pycache__/
+*.pyc
+
+# 知识库 SQLite 索引（生成物，不进版本控制）
+knowledge/index.db
+.opencode/knowledge/
+*.db-journal
+*.db-wal
+*.db-shm
+
+# 操作系统文件
+Thumbs.db
+.DS_Store
+
+# IDE 配置
+.vscode/
+.idea/

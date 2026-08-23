@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "view": "requirements",
+  "file": "D:\\workspace\\AISI\\systems\\hr-management-system\\views\\requirements.json",
+  "schema": "aisi.requirements/1",
+  "warnings": [],
+  "state": "validated",
+  "next_action": "aisi gate review requirements",
+  "force_override": false
+}

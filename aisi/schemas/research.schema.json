@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.research/1",
+  "title": "调研工件（证据缺口补足）",
+  "type": "object",
+  "required": ["schema", "topic", "questions", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.research/1" },
+    "topic": { "type": "string", "minLength": 1 },
+    "questions": { "type": "array", "items": { "$ref": "#/definitions/question" } },
+    "sources": { "type": "array", "items": { "$ref": "#/definitions/source" } }
+  },
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["id", "question", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^Q\\d{2,}$" },
+        "question": { "type": "string", "minLength": 4 },
+        "reason": { "type": "string" },
+        "status": { "enum": ["open", "answered", "closed"] },
+        "findings": { "type": "array", "items": { "$ref": "#/definitions/finding" } }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["summary", "source_refs"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": { "type": "string", "minLength": 4 },
+        "source_refs": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "enum": ["high", "medium", "low"] }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "url", "title", "accessed", "reliability"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^(WEB|DOC)-\\d{3,}$" },
+        "url": { "type": "string" },
+        "title": { "type": "string" },
+        "accessed": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}" },
+        "reliability": { "enum": ["high", "medium", "low"] }
+      }
+    }
+  }
+}
