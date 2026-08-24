@@ -276,11 +276,11 @@ ingest ──→ requirements ──→ composition ──→ architecture ─�
 
 | 里程碑 | 内容 | 验收 |
 |---|---|---|
-| M1 | 6 个 JSON Schema + validate + init + status + gate | Schema 自校验 + 单测 |
-| M2 | ingest + coverage + research 三命令 | HR 样例资料导入出缺口清单 |
-| M3 | HR 样例四视图草稿过 validate | trace 完整性 lint 全绿 |
-| M4 | render（md/mermaid/自包含HTML）+ export sysml | HR 样例四图 + .sysml 可读 |
-| M5 | 规格说明报告骨架 + opencode/Codex 适配层 | 端到端演示 |
+| M1 | 6 个 JSON Schema + validate + init + status + gate | ✅ Schema 自校验 + 单测（2026-08-23） |
+| M2 | ingest + coverage + research 三命令 | ✅ HR 样例 89 缺口→0，调研闭环实战（2026-08-24） |
+| M3 | HR 样例四视图草稿过 validate | ✅ 三轮门禁迭代，67 需求/32 模块全追踪（2026-08-23） |
+| M4 | render（md/mermaid/自包含HTML）+ export sysml | ✅ 170 边追踪 + 4 个 .sysml + 12 图 + GJB438C 报告（2026-08-23） |
+| M5 | 规格说明报告骨架 + opencode/Codex 适配层 | ✅ SKILL.md + AGENTS.md + 自研 Harness 指南 + README（2026-08-24） |
 
 ## 11. 待确认小项（不阻塞，默认值已给出）
 
