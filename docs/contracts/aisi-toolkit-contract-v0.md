@@ -176,6 +176,8 @@ systems/<system-id>/
 
 ### 4.6 调研工件 `aisi.research/1`（资料不足时的搜索补足）
 
+**修订 R4**（2026-08-24，M2 实施）：新增两个契约——`aisi.sources/1`（sources/index.json 来源索引：id/title/origin/format/chunks/sha256）与 `aisi.gaps/1`（coverage 产出的证据缺口：kind ∈ NO_SOURCES_INGESTED|NO_SOURCE|UNRESOLVED_SOURCE|OPEN_CLARIFICATION|MISSING_MEASURE，severity ∈ high|medium|low）。ingest 支持 md/txt/html/docx/pdf 抽取与 URL 占位登记（CLI 不联网，正文由宿主抓取回填）；分块锚点格式：文本 `SRC-NNN#L<起>-L<止>`，PDF `SRC-NNN#P<页>`。
+
 ```jsonc
 {
   "schema": "aisi.research/1",

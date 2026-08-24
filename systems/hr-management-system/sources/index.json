@@ -1,0 +1,14 @@
+{
+  "schema": "aisi.sources/1",
+  "sources": [
+    {
+      "id": "SRC-001",
+      "title": "hr-design-report-csdn",
+      "origin": "hr-csdn-article.md",
+      "format": "md",
+      "ingested": "2026-08-24",
+      "chunks": 3,
+      "sha256": "04424a7ac28f56d7"
+    }
+  ]
+}

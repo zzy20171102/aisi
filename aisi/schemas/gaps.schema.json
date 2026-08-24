@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.gaps/1",
+  "title": "证据缺口分析结果",
+  "type": "object",
+  "required": ["schema", "view", "system_id", "generated_at", "summary", "gaps"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.gaps/1" },
+    "view": { "type": "string" },
+    "system_id": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "summary": {
+      "type": "object",
+      "required": ["total", "high", "medium", "low"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "high": { "type": "integer", "minimum": 0 },
+        "medium": { "type": "integer", "minimum": 0 },
+        "low": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "gaps": { "type": "array", "items": { "$ref": "#/definitions/gap" } }
+  },
+  "definitions": {
+    "gap": {
+      "type": "object",
+      "required": ["kind", "severity", "target", "detail", "question_hint"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["NO_SOURCES_INGESTED", "NO_SOURCE", "UNRESOLVED_SOURCE",
+                           "OPEN_CLARIFICATION", "MISSING_MEASURE"] },
+        "severity": { "enum": ["high", "medium", "low"] },
+        "target": { "type": "string" },
+        "detail": { "type": "string" },
+        "question_hint": { "type": "string" }
+      }
+    }
+  }
+}

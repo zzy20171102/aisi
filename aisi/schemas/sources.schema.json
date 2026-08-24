@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aisi.sources/1",
+  "title": "资料来源索引",
+  "type": "object",
+  "required": ["schema", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aisi.sources/1" },
+    "sources": { "type": "array", "items": { "$ref": "#/definitions/source" } }
+  },
+  "definitions": {
+    "source": {
+      "type": "object",
+      "required": ["id", "title", "origin", "format", "ingested", "chunks", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^SRC-\\d{3,}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "origin": { "type": "string" },
+        "format": { "enum": ["md", "txt", "html", "docx", "pdf", "url"] },
+        "ingested": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}" },
+        "chunks": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string" }
+      }
+    }
+  }
+}

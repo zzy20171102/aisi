@@ -7,8 +7,11 @@ import sys
 from pathlib import Path
 
 from . import __version__
+from .coverage import analyze as coverage_analyze
+from .ingest import ingest_file
 from .lint import lint
 from .render import all_diagrams, report_markdown, viewer_html
+from .research import ingest_findings, plan as research_plan
 from .sysml_export import check_balance, export_architecture, export_composition, \
     export_processes, export_requirements
 from .trace import analyze, build_edges, render_markdown as trace_md
@@ -270,6 +273,69 @@ def cmd_render(a) -> int:
     return EXIT_OK
 
 
+def cmd_ingest(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    try:
+        r = ingest_file(ws, a.file, a.title)
+    except (FileNotFoundError, ValueError) as e:
+        return fail([{"code": "ingest_failed", "message": str(e)}], EXIT_CONTRACT)
+    emit({"ok": True, **r,
+          "next_action": "aisi coverage 检查证据缺口（需求 source_refs 现在可解析）"})
+    return EXIT_OK
+
+
+def cmd_coverage(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    result = coverage_analyze(ws, a.view)
+    out = ws.base / "research" / "gaps.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    emit({"ok": True, "summary": result["summary"],
+          "by_kind": {k: sum(1 for g in result["gaps"] if g["kind"] == k)
+                      for k in {g["kind"] for g in result["gaps"]}},
+          "file": str(out),
+          "next_action": "aisi research plan 生成调研问题（或先 ingest 补充资料）"})
+    return EXIT_OK
+
+
+def cmd_research_plan(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    try:
+        r = research_plan(ws)
+    except FileNotFoundError as e:
+        return fail([{"code": "gaps_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    emit({"ok": True, **r})
+    return EXIT_OK
+
+
+def cmd_research_ingest(a) -> int:
+    try:
+        ws = Workspace(find_workspace(a.path))
+    except FileNotFoundError as e:
+        return fail([{"code": "workspace_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    try:
+        if a.file == "-":
+            data = json.loads(sys.stdin.read())
+        else:
+            data = json.loads(Path(a.file).read_text(encoding="utf-8"))
+        r = ingest_findings(ws, data, a.to_kb)
+    except (ValueError, json.JSONDecodeError) as e:
+        return fail([{"code": "research_invalid", "message": str(e)}], EXIT_CONTRACT)
+    except FileNotFoundError as e:
+        return fail([{"code": "file_not_found", "message": str(e)}], EXIT_NOT_FOUND)
+    emit({"ok": True, **r})
+    return EXIT_OK
+
+
 def main(argv: list[str] | None = None) -> int:
     for s in (sys.stdout, sys.stderr):
         if hasattr(s, "reconfigure"):
@@ -331,6 +397,28 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--force", action="store_true")
     p.add_argument("--reason", default="")
     p.set_defaults(func=cmd_render)
+
+    p = sub.add_parser("ingest", help="资料登记+抽取分块（md/txt/html/docx/pdf/url）")
+    p.add_argument("--file", required=True, help="资料文件路径，或 http(s):// URL 登记")
+    p.add_argument("--title", default="", help="来源标题（缺省用文件名）")
+    p.add_argument("--path", default=None)
+    p.set_defaults(func=cmd_ingest)
+
+    p = sub.add_parser("coverage", help="证据缺口分析 → research/gaps.json")
+    p.add_argument("--view", default="requirements", choices=VIEW_ORDER)
+    p.add_argument("--path", default=None)
+    p.set_defaults(func=cmd_coverage)
+
+    p = sub.add_parser("research", help="调研闭环（plan / ingest）")
+    sub2 = p.add_subparsers(dest="raction", required=True)
+    pp = sub2.add_parser("plan", help="由 gaps 生成调研问题清单")
+    pp.add_argument("--path", default=None)
+    pp.set_defaults(func=cmd_research_plan)
+    pi = sub2.add_parser("ingest", help="归档调研结果（--file 或 - stdin）")
+    pi.add_argument("--file", required=True)
+    pi.add_argument("--to-kb", action="store_true", help="同步生成知识库条目文件")
+    pi.add_argument("--path", default=None)
+    pi.set_defaults(func=cmd_research_ingest)
 
     args = ap.parse_args(argv)
     return args.func(args)

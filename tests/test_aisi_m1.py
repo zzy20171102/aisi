@@ -96,7 +96,7 @@ class M1Tests(unittest.TestCase):
 
     def test_schemas_load_and_self_validate(self):
         names = list_schemas()
-        self.assertEqual(len(names), 8)
+        self.assertEqual(len(names), 10)  # R4 后新增 sources/gaps 两个契约
         for n in names:
             s = load_schema(n)
             self.assertIn("$id", s)

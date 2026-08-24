@@ -1,0 +1,31 @@
+{
+  "schema": "aisi.research/1",
+  "topic": "人力资源管理系统 证据缺口调研",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "报告未展开职称管理细节，是否与职位管理同构？",
+      "reason": "OPEN_CLARIFICATION（REQ-001.8.3）：REQ-001.8.3 待澄清：报告未展开职称管理细节，是否与职位管理同构？",
+      "status": "open"
+    },
+    {
+      "id": "Q02",
+      "question": "调研行业典型值或与用户确认 REQ-002 的量化指标（数值+单位+条件）",
+      "reason": "MISSING_MEASURE（REQ-002）：性能类需求 REQ-002《性能需求》缺少量化指标 measures",
+      "status": "open"
+    },
+    {
+      "id": "Q03",
+      "question": "报告未给出量化响应指标（如页面响应时间上限），是否需要补充？",
+      "reason": "OPEN_CLARIFICATION（REQ-002.1）：REQ-002.1 待澄清：报告未给出量化响应指标（如页面响应时间上限），是否需要补充？",
+      "status": "open"
+    },
+    {
+      "id": "Q04",
+      "question": "调研行业典型值或与用户确认 REQ-002.1 的量化指标（数值+单位+条件）",
+      "reason": "MISSING_MEASURE（REQ-002.1）：性能类需求 REQ-002.1《操作响应性能》缺少量化指标 measures",
+      "status": "open"
+    }
+  ],
+  "sources": []
+}
