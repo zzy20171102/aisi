@@ -65,11 +65,10 @@ def _write_kb(ws, data: dict) -> list[str]:
     if kb_dir is None:
         kb_dir = root / "knowledge"  # 项目根无知识库时默认创建（12-Factor：状态即文件）
     n = 0
-    for f in kb_dir.rglob("KB-????-????.md"):
-        try:
-            n = max(n, int(f.stem.split("-")[2]))
-        except (IndexError, ValueError):
-            pass
+    for f in kb_dir.rglob("KB-*.md"):
+        m = re.match(r"^KB-\d{4}-(\d{4})", f.stem)
+        if m:
+            n = max(n, int(m.group(1)))
     year = date.today().year
     files = []
     for q in data.get("questions", []):

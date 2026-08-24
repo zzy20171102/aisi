@@ -67,6 +67,38 @@
           "to": "approved",
           "actor": "human-cli",
           "comment": "用户确认通过（2026-08-23）；两处待澄清暂不补充，保留待调研提示"
+        },
+        {
+          "at": "2026-08-24T20:41:35",
+          "event": "gate:reset",
+          "from": "approved",
+          "to": "draft",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-24T20:41:36",
+          "event": "validate",
+          "from": "draft",
+          "to": "validated",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-24T20:41:42",
+          "event": "gate:review",
+          "from": "validated",
+          "to": "reviewed",
+          "actor": "human-cli",
+          "comment": ""
+        },
+        {
+          "at": "2026-08-24T20:41:42",
+          "event": "gate:approve",
+          "from": "reviewed",
+          "to": "approved",
+          "actor": "human-cli",
+          "comment": "调研回填（用户授权执行调研闭环）：Q01职称管理定位明确、Q02-Q04响应时间量化指标补充（依据KB-2026-0005~0008）"
         }
       ]
     },

@@ -148,13 +148,10 @@ def next_id(conn: sqlite3.Connection) -> str:
                 seq = max(seq, int(row["id"].rsplit("-", 1)[1]))
             except ValueError:
                 pass
-    for f in KB_DIR.rglob("KB-????-????.md"):
-        stem = f.stem
-        if stem.startswith(prefix):
-            try:
-                seq = max(seq, int(stem.rsplit("-", 1)[1]))
-            except ValueError:
-                pass
+    for f in KB_DIR.rglob("KB-*.md"):
+        m = re.match(rf"^{prefix}(\d{{4}})", f.stem)
+        if m:
+            seq = max(seq, int(m.group(1)))
     return f"{prefix}{seq + 1:04d}"
 
 

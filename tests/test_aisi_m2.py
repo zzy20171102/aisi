@@ -145,6 +145,30 @@ class M2Tests(unittest.TestCase):
         self.assertIn("<3s", kb_text)
         self.assertIn("kb.py save", out["next_action"])
 
+    def test_coverage_counts_research_web_sources(self):
+        """调研 WEB- 来源（findings.json）应计入 coverage 的可解析来源。"""
+        self.write_reqs()
+        f = self.tmp / "report.md"
+        f.write_text(SRC_TEXT, encoding="utf-8")
+        run_cli("ingest", "--file", str(f))
+        findings = {
+            "schema": "aisi.research/1", "topic": "测试调研主题",
+            "questions": [{"id": "Q01", "question": "响应时间上限是多少？", "reason": "测试原因",
+                           "status": "answered",
+                           "findings": [{"summary": "示例调研结论内容", "source_refs": ["WEB-001"]}]}],
+            "sources": [{"id": "WEB-001", "url": "https://example.com", "title": "示例来源",
+                         "accessed": "2026-08-24", "reliability": "medium"}]}
+        fp = self.tmp / "findings.json"
+        fp.write_text(json.dumps(findings), encoding="utf-8")
+        run_cli("research", "ingest", "--file", str(fp))
+        p = self.ws / "views" / "requirements.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["requirements"][0]["source_refs"].append("WEB-001")
+        p.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        rc, out = run_cli("coverage")
+        self.assertEqual(rc, 0, out)
+        self.assertNotIn("UNRESOLVED_SOURCE", out["by_kind"])
+
     def test_chunk_text_pdf_page_anchor(self):
         text = "=== [PDF page 3] ===\n\n某系统性能指标说明文字。\n\n第二段内容。"
         chunks = chunk_text(text, "SRC-001")

@@ -1,0 +1,145 @@
+{
+  "schema": "aisi.research/1",
+  "topic": "人力资源管理系统 证据缺口调研（职称管理定位 / 响应时间量化指标）",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "报告未展开职称管理细节，是否与职位管理同构？",
+      "reason": "OPEN_CLARIFICATION（REQ-001.8.3）：REQ-001.8.3 待澄清：报告未展开职称管理细节，是否与职位管理同构？",
+      "status": "answered",
+      "findings": [
+        {
+          "summary": "职称与职位不同构：职称是专业技术资格等级（按系列评审/认定，如初级/中级/高级/正高级，全国统一评价体系，各地建有独立的\"专业技术人才职称管理系统\"承担评审申报）；职位是组织架构内的职能岗位（部门树节点）。二者数据模型与管理流程均不同。",
+          "source_refs": [
+            "WEB-001",
+            "WEB-002"
+          ],
+          "confidence": "high"
+        },
+        {
+          "summary": "职称层级可与事业单位专业技术岗位等级对应（如人力资源管理专业人员职称属经济系列，正高级对应专业技术一级岗位等），说明职称与岗位存在映射关系但非同一事物。",
+          "source_refs": [
+            "WEB-003"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "summary": "对本微型内部人事系统的定位结论：职称管理 = 职称字典维护（系列/等级）+ 员工职称属性（支撑人事统计 7 维中的\"职称\"维度、工资表按职称筛选），不含职称评审申报流程；与职位管理（组织岗位树）非同构但通过员工主数据关联。",
+          "source_refs": [
+            "WEB-001",
+            "WEB-003",
+            "SRC-001#L96-L102"
+          ],
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "question": "调研行业典型值或与用户确认 REQ-002 的量化指标（数值+单位+条件）",
+      "reason": "MISSING_MEASURE（REQ-002）：性能类需求 REQ-002《性能需求》缺少量化指标 measures",
+      "status": "answered",
+      "findings": [
+        {
+          "summary": "建议 REQ-002（性能需求组）采用系统级指标：页面加载时间 <=3s、常规查询响应 <=1s；与低配运行环境（单核 2G）条件绑定。",
+          "source_refs": [
+            "WEB-004",
+            "WEB-005",
+            "WEB-006"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "question": "报告未给出量化响应指标（如页面响应时间上限），是否需要补充？",
+      "reason": "OPEN_CLARIFICATION（REQ-002.1）：REQ-002.1 待澄清：报告未给出量化响应指标（如页面响应时间上限），是否需要补充？",
+      "status": "answered",
+      "findings": [
+        {
+          "summary": "行业惯例：Web 页面响应 2 秒以内可接受、3 秒以上导致用户流失（亚马逊云科技）；谷歌研究：页面加载从 1s 增至 5s 时移动访客跳出概率上升 90%。",
+          "source_refs": [
+            "WEB-004"
+          ],
+          "confidence": "high"
+        },
+        {
+          "summary": "内部/非互联网系统可适当放宽：核心接口响应 <500ms、普通接口 <1s、特殊接口不超过 3s（测试之家行业参考）。",
+          "source_refs": [
+            "WEB-005"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "summary": "国家标准参考（GB 城镇供水管网智能化通用技术要求）：核心业务响应 <=3s，非核心业务放宽至 3~5s。综合建议本系统：页面加载 <=3s、登录鉴权 <=1s、常规查询 <=1s、统计报表类 <=5s。",
+          "source_refs": [
+            "WEB-006"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "question": "调研行业典型值或与用户确认 REQ-002.1 的量化指标（数值+单位+条件）",
+      "reason": "MISSING_MEASURE（REQ-002.1）：性能类需求 REQ-002.1《操作响应性能》缺少量化指标 measures",
+      "status": "answered",
+      "findings": [
+        {
+          "summary": "REQ-002.1 落地指标建议（4 条 measures）：页面加载时间 <=3s（常规操作页面）；登录鉴权响应 <=1s；常规查询响应 <=1s（多条件搜索、工资表筛选）；统计报表生成 <=5s（积分分布/人事饼图/离职分析）。依据：行业 2s~3s 惯例 + 国标核心业务 3s 上限 + 内部系统放宽原则。",
+          "source_refs": [
+            "WEB-004",
+            "WEB-005",
+            "WEB-006"
+          ],
+          "confidence": "high"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "WEB-001",
+      "url": "https://ggfw.hrss.gd.gov.cn/gdweb",
+      "title": "广东省专业技术人才职称管理系统（职称评审独立于内部岗位管理）",
+      "accessed": "2026-08-24",
+      "reliability": "high"
+    },
+    {
+      "id": "WEB-002",
+      "url": "https://rsj.gz.gov.cn/zmhd/cjwt/rsrc/content/post_8519823.html",
+      "title": "广州市人社局：职称评定常见热点问答",
+      "accessed": "2026-08-24",
+      "reliability": "high"
+    },
+    {
+      "id": "WEB-003",
+      "url": "https://m12333.cn/qa/mkrkp.html",
+      "title": "人力资源管理专业人员职称新规（职称层级与专业技术岗位等级对应）",
+      "accessed": "2026-08-24",
+      "reliability": "medium"
+    },
+    {
+      "id": "WEB-004",
+      "url": "https://www.amazonaws.cn/what-is/website-response-time",
+      "title": "亚马逊云科技：网站响应时间行业标准（2s 内可接受，3s 以上用户流失）",
+      "accessed": "2026-08-24",
+      "reliability": "high"
+    },
+    {
+      "id": "WEB-005",
+      "url": "https://testerhome.com/topics/37119",
+      "title": "压力测试核心性能指标及行业标准（核心接口<500ms，普通<1s，特殊<=3s）",
+      "accessed": "2026-08-24",
+      "reliability": "medium"
+    },
+    {
+      "id": "WEB-006",
+      "url": "https://std.samr.gov.cn/dcpspTools/gbPlan/download?path=%2Fzxd%2F2024006334%2F20_%E6%A0%87%E5%87%86%E8%B5%B7%E8%8D%89%2F20_WD_2024006334_%E5%9F%8E%E9%95%87%E4%BE%9B%E6%B0%B4%E7%AE%A1%E7%BD%91%E6%99%BA%E8%83%BD%E5%8C%96%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF%E8%A6%81%E6%B1%82.pdf",
+      "title": "国家标准《城镇供水管网智能化通用技术要求》（核心业务<=3s，非核心3~5s）",
+      "accessed": "2026-08-24",
+      "reliability": "high"
+    }
+  ]
+}

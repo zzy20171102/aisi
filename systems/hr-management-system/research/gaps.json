@@ -2,41 +2,12 @@
   "schema": "aisi.gaps/1",
   "view": "requirements",
   "system_id": "hr-management-system",
-  "generated_at": "2026-08-24T20:21:56",
+  "generated_at": "2026-08-24T20:44:57",
   "summary": {
-    "total": 4,
+    "total": 0,
     "high": 0,
-    "medium": 4,
+    "medium": 0,
     "low": 0
   },
-  "gaps": [
-    {
-      "kind": "OPEN_CLARIFICATION",
-      "severity": "medium",
-      "target": "REQ-001.8.3",
-      "detail": "REQ-001.8.3 待澄清：报告未展开职称管理细节，是否与职位管理同构？",
-      "question_hint": "报告未展开职称管理细节，是否与职位管理同构？"
-    },
-    {
-      "kind": "MISSING_MEASURE",
-      "severity": "medium",
-      "target": "REQ-002",
-      "detail": "性能类需求 REQ-002《性能需求》缺少量化指标 measures",
-      "question_hint": "调研行业典型值或与用户确认 REQ-002 的量化指标（数值+单位+条件）"
-    },
-    {
-      "kind": "OPEN_CLARIFICATION",
-      "severity": "medium",
-      "target": "REQ-002.1",
-      "detail": "REQ-002.1 待澄清：报告未给出量化响应指标（如页面响应时间上限），是否需要补充？",
-      "question_hint": "报告未给出量化响应指标（如页面响应时间上限），是否需要补充？"
-    },
-    {
-      "kind": "MISSING_MEASURE",
-      "severity": "medium",
-      "target": "REQ-002.1",
-      "detail": "性能类需求 REQ-002.1《操作响应性能》缺少量化指标 measures",
-      "question_hint": "调研行业典型值或与用户确认 REQ-002.1 的量化指标（数值+单位+条件）"
-    }
-  ]
+  "gaps": []
 }

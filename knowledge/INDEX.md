@@ -1,7 +1,7 @@
 # AISI 项目知识库索引
 
 > ⚠️ 本文件由 kb.py 自动生成（save/rebuild 时同步刷新），请勿手工编辑。
-> 最后更新：2026-08-23 ｜ 总条目 4 ｜ active 4
+> 最后更新：2026-08-24 ｜ 总条目 8 ｜ active 8
 
 ## 使用说明
 
@@ -56,4 +56,7 @@
 
 | ID | 标题 | 标签 | 状态 | 更新 | 文件 |
 | -- | ---- | ---- | ---- | ---- | ---- |
-| （暂无） | | | | | |
+| KB-2026-0005 | 调研：报告未展开职称管理细节，是否与职位管理同构？ | research,hr-management-system | active | 2026-08-24 | knowledge/domains/KB-2026-0005-research.md |
+| KB-2026-0006 | 调研：调研行业典型值或与用户确认 REQ-002 的量化指标（数值+单位+条件） | research,hr-management-system | active | 2026-08-24 | knowledge/domains/KB-2026-0006-research.md |
+| KB-2026-0007 | 调研：报告未给出量化响应指标（如页面响应时间上限），是否需要补充？ | research,hr-management-system | active | 2026-08-24 | knowledge/domains/KB-2026-0007-research.md |
+| KB-2026-0008 | 调研：调研行业典型值或与用户确认 REQ-002.1 的量化指标（数值+单位+条件） | research,hr-management-system | active | 2026-08-24 | knowledge/domains/KB-2026-0008-research.md |

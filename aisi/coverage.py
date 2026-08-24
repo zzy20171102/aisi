@@ -12,6 +12,13 @@ def analyze(ws, view: str = "requirements") -> dict:
     gaps = []
     index = load_index(ws)
     src_ids = {s["id"] for s in index["sources"]}
+    findings_p = ws.base / "research" / "findings.json"
+    if findings_p.exists():
+        try:
+            findings = json.loads(findings_p.read_text(encoding="utf-8"))
+            src_ids |= {s["id"] for s in findings.get("sources", [])}
+        except json.JSONDecodeError:
+            pass
     if not src_ids:
         gaps.append({"kind": "NO_SOURCES_INGESTED", "severity": "high", "target": view,
                      "detail": "工作区尚未登记任何资料来源",
