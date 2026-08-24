@@ -1,7 +1,7 @@
 # AISI 项目知识库索引
 
 > ⚠️ 本文件由 kb.py 自动生成（save/rebuild 时同步刷新），请勿手工编辑。
-> 最后更新：2026-08-24 ｜ 总条目 8 ｜ active 8
+> 最后更新：2026-08-24 ｜ 总条目 10 ｜ active 10
 
 ## 使用说明
 
@@ -41,6 +41,7 @@
 | ID | 标题 | 标签 | 状态 | 更新 | 文件 |
 | -- | ---- | ---- | ---- | ---- | ---- |
 | KB-2026-0004 | 需求拆解的三轮迭代经验：粗粒度→层级化→类型分组（附待澄清机制） | requirements,sysml,gjb438c,workflow | active | 2026-08-23 | knowledge/lessons/KB-2026-0004-requirement-decomposition-iteration.md |
+| KB-2026-0010 | 两个实战坑：GitHub 推送代理切换策略 + KB 编号 glob 不匹配带后缀文件名 | git,proxy,knowledge-base,glob,workflow | active | 2026-08-24 | knowledge/lessons/KB-2026-0010-github-proxy-and-kb-id-glob.md |
 
 ## entities/ — 实体卡片
 
@@ -49,6 +50,7 @@
 | ID | 标题 | 标签 | 状态 | 更新 | 文件 |
 | -- | ---- | ---- | ---- | ---- | ---- |
 | KB-2026-0003 | AISI 项目进展快照（2026-08-23） | progress,milestone,aisi | active | 2026-08-23 | knowledge/entities/KB-2026-0003-aisi-progress-2026-08-23.md |
+| KB-2026-0009 | AISI 项目进展快照（2026-08-24：M2/M5 完成，五里程碑收官） | progress,milestone,aisi | active | 2026-08-24 | knowledge/entities/KB-2026-0009-aisi-progress-2026-08-24.md |
 
 ## domains/ — 领域知识
 
